@@ -19,12 +19,6 @@ After an audit, determine which vulnerable dependencies are actually reachable a
 ### Claude Code
 
 ```
-/plugin install github:MeterianHQ/ai-skills
-```
-
-Or via marketplace:
-
-```
 /plugin marketplace add github:MeterianHQ/ai-skills
 /plugin install meterian-security-audit@meterian-ai-skills
 ```
