@@ -1,0 +1,21 @@
+{
+  "name": "meterian-ai-skills",
+  "owner": {
+    "name": "Meterian",
+    "email": "support@meterian.io"
+  },
+  "metadata": {
+    "description": "Security vulnerability scanning and reachability analysis skills for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "meterian-security-audit",
+      "source": "./claude",
+      "description": "Audit open-source dependencies for vulnerabilities and perform reachability analysis using the Meterian CLI",
+      "homepage": "https://meterian.io",
+      "repository": "https://github.com/MeterianHQ/ai-skills",
+      "license": "MIT",
+      "keywords": ["security", "dependencies", "vulnerabilities", "sca", "reachability"]
+    }
+  ]
+}
