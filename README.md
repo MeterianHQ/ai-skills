@@ -1,5 +1,7 @@
 # Meterian AI Skills
 
+[![skills.sh](https://skills.sh/b/MeterianHQ/ai-skills)](https://skills.sh/MeterianHQ/ai-skills)
+
 Security vulnerability scanning and reachability analysis skills for AI coding assistants.
 
 ## Skills
@@ -15,6 +17,14 @@ After an audit, determine which vulnerable dependencies are actually reachable a
 **Classifications:** Reachable · Conditionally reachable · Loaded but not called · Present but not reachable · Unknown
 
 ## Installation
+
+### Any agent (skills CLI)
+
+```bash
+npx skills add MeterianHQ/ai-skills
+```
+
+Installs both skills for all detected agents in the current project. Use `-g` for global install, `-a claude-code` to target a specific agent.
 
 ### Claude Code
 
