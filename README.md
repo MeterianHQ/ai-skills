@@ -19,19 +19,67 @@ After an audit, determine which vulnerable dependencies are actually reachable a
 ### Claude Code
 
 ```
+/plugin install github:MeterianHQ/ai-skills
+```
+
+Or via marketplace:
+
+```
 /plugin marketplace add github:MeterianHQ/ai-skills
 /plugin install meterian-security-audit@meterian-ai-skills
-```
-
-Or directly:
-
-```
-/plugin install github:MeterianHQ/ai-skills
 ```
 
 ### Cursor
 
 Install via Cursor's plugin manager pointing to `https://github.com/MeterianHQ/ai-skills`.
+
+### Windsurf
+
+Copy `.windsurf/rules/` from this repository into your project root:
+
+```bash
+cp -r .windsurf your-project/
+```
+
+Or clone the repository and symlink the rules directory.
+
+### GitHub Copilot
+
+Copy `.github/copilot-instructions.md` from this repository into your project root:
+
+```bash
+cp .github/copilot-instructions.md your-project/.github/
+```
+
+### Cline
+
+Copy `.clinerules` from this repository into your project root. Cline will automatically pick up the `!include` directives and load the skill content from the `skills/` directory.
+
+```bash
+cp .clinerules your-project/
+cp -r skills your-project/
+```
+
+### Aider
+
+Copy `.aider.conf.yml` and the `skills/` directory from this repository into your project root:
+
+```bash
+cp .aider.conf.yml your-project/
+cp -r skills your-project/
+```
+
+Aider will automatically read the skill files listed under `read:` on startup.
+
+### Continue.dev
+
+Copy `.continue/rules/` from this repository into your project root:
+
+```bash
+cp -r .continue your-project/
+```
+
+Continue will load the rules files and apply them based on the `globs` and `alwaysApply` frontmatter settings.
 
 ### Gemini CLI
 
@@ -63,6 +111,18 @@ ai-skills/
     marketplace.json               # Claude Code marketplace
   .cursor-plugin/
     plugin.json                    # Cursor plugin
+  .windsurf/
+    rules/
+      meterian-security-audit.md   # Windsurf rules
+      meterian-reachability.md
+  .github/
+    copilot-instructions.md        # GitHub Copilot instructions
+  .clinerules                      # Cline rules (uses !include)
+  .aider.conf.yml                  # Aider config (read: skill files)
+  .continue/
+    rules/
+      meterian-security-audit.md   # Continue.dev rules
+      meterian-reachability.md
   GEMINI.md                        # Gemini CLI context
   gemini-extension.json            # Gemini extension config
   AGENTS.md                        # Codex CLI context
