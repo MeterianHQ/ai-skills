@@ -9,5 +9,6 @@
   "homepage": "https://meterian.io",
   "repository": "https://github.com/MeterianHQ/ai-skills",
   "license": "MIT",
-  "keywords": ["security", "dependencies", "vulnerabilities", "sca", "reachability", "meterian"]
+  "keywords": ["security", "dependencies", "vulnerabilities", "sca", "reachability", "meterian"],
+  "skills": "./skills/"
 }

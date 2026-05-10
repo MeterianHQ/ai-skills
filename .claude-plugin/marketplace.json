@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "meterian-security-audit",
-      "source": "./claude",
+      "source": "./",
       "description": "Audit open-source dependencies for vulnerabilities and perform reachability analysis using the Meterian CLI",
       "homepage": "https://meterian.io",
       "repository": "https://github.com/MeterianHQ/ai-skills",

@@ -1,0 +1,6 @@
+{
+  "name": "meterian-security-audit",
+  "description": "Audit open-source dependencies for vulnerabilities and perform reachability analysis using the Meterian CLI",
+  "version": "0.1.0",
+  "contextFileName": "GEMINI.md"
+}
