@@ -1,5 +1,5 @@
 ---
-name: meterian-reachability
+name: reachability-analysis
 description: Use after a security audit to determine which vulnerable dependencies are actually reachable and exploitable in the application source code. Activates when the user asks "which vulnerabilities are reachable?", "check if this is exploitable", or answers yes to the post-audit reachability offer.
 metadata:
   short-description: Classify vulnerable dependencies by reachability — reachable, conditionally reachable, loaded but not called, present but not reachable, or unknown
@@ -11,9 +11,9 @@ Determine whether vulnerable dependencies found by a security audit are actually
 
 ## Input
 
-Use the vulnerable package list from the most recent `meterian-security-audit` result in the current conversation (language, name, version, CVE/advisory ID, safeVersions).
+Use the vulnerable package list from the most recent `security-audit` result in the current conversation (language, name, version, CVE/advisory ID, safeVersions).
 
-If no audit result is present in the conversation, invoke the `meterian-security-audit` skill (Mode A) first, then return here and proceed.
+If no audit result is present in the conversation, invoke the `security-audit` skill (Mode A) first, then return here and proceed.
 If the audit finds no vulnerabilities, report that reachability analysis is not needed and stop.
 
 ## Workflow
@@ -195,7 +195,7 @@ If any finding is Reachable or Conditionally reachable, ask:
 
 > "Would you like me to proceed with remediation for the reachable vulnerabilities?"
 
-If yes, invoke the `meterian-security-audit` skill (Mode C) for those packages only.
+If yes, invoke the `security-audit` skill (Mode C) for those packages only.
 
 ## Rules
 

@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "meterian-security-audit",
+      "name": "meterian",
       "source": "./",
       "description": "Audit open-source dependencies for vulnerabilities and perform reachability analysis using the Meterian CLI",
       "homepage": "https://meterian.io",

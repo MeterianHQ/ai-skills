@@ -1,2 +1,2 @@
-!include ./skills/meterian-security-audit/SKILL.md
-!include ./skills/meterian-reachability/SKILL.md
+!include ./skills/security-audit/SKILL.md
+!include ./skills/reachability-analysis/SKILL.md

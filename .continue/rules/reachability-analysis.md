@@ -12,7 +12,7 @@ Determine whether vulnerable dependencies found by a security audit are actually
 
 Use the vulnerable package list from the most recent Meterian security audit result in the current conversation (language, name, version, CVE/advisory ID, safeVersions).
 
-If no audit result is present in the conversation, run a full dependency audit first (see `meterian-security-audit` rules), then return here and proceed.
+If no audit result is present in the conversation, run a full dependency audit first (see `security-audit` rules), then return here and proceed.
 If the audit finds no vulnerabilities, report that reachability analysis is not needed and stop.
 
 ## Workflow

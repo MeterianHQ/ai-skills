@@ -63,7 +63,7 @@ If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N pack
 
 6. After offering remediation (step 5) but before applying any fixes, if any vulnerabilities were found, ask:
    > "Would you like me to also run a reachability analysis to determine which of these vulnerabilities are actually exploitable in your codebase?"
-   - If yes → apply the `meterian-reachability` rules, including the list of vulnerable packages (name, version, CVE ID)
+   - If yes → apply the `reachability-analysis` rules, including the list of vulnerable packages (name, version, CVE ID)
    - If no → end the audit flow
 
 ## Mode B — Ad-hoc Security Query

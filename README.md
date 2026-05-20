@@ -4,12 +4,12 @@ Security vulnerability scanning and reachability analysis skills for AI coding a
 
 ## Skills
 
-### `meterian-security-audit`
+### `meterian:security-audit`
 Audit open-source dependencies for vulnerabilities across all supported ecosystems (npm, pip, Maven, Gradle, Cargo, Composer, Bundler, Go modules, NuGet, Conan, pub/Flutter, Leiningen, Swift PM).
 
 Triggers automatically when you open or modify a manifest file (`package.json`, `requirements.txt`, `pom.xml`, `Cargo.toml`, etc.)
 
-### `meterian-reachability`
+### `meterian:reachability-analysis`
 After an audit, determine which vulnerable dependencies are actually reachable and exploitable in your application source code. Uses a 6-step workflow: enrich via CLI, identify entry points, search usage patterns, trace call paths, classify findings, and assign priority.
 
 **Classifications:** Reachable · Conditionally reachable · Loaded but not called · Present but not reachable · Unknown
@@ -20,7 +20,7 @@ After an audit, determine which vulnerable dependencies are actually reachable a
 
 ```
 /plugin marketplace add MeterianHQ/ai-skills
-/plugin install meterian-security-audit@meterian-ai-skills
+/plugin install meterian@meterian-ai-skills
 /reload-plugins
 ```
 
@@ -99,8 +99,8 @@ npm install -g @meterian/cli
 ```
 ai-skills/
   skills/                          # shared skill content
-    meterian-security-audit/SKILL.md
-    meterian-reachability/SKILL.md
+    security-audit/SKILL.md
+    reachability-analysis/SKILL.md
   .claude-plugin/
     plugin.json                    # Claude Code plugin
     marketplace.json               # Claude Code marketplace
@@ -108,16 +108,16 @@ ai-skills/
     plugin.json                    # Cursor plugin
   .windsurf/
     rules/
-      meterian-security-audit.md   # Windsurf rules
-      meterian-reachability.md
+      security-audit.md             # Windsurf rules
+      reachability-analysis.md
   .github/
     copilot-instructions.md        # GitHub Copilot instructions
   .clinerules                      # Cline rules (uses !include)
   .aider.conf.yml                  # Aider config (read: skill files)
   .continue/
     rules/
-      meterian-security-audit.md   # Continue.dev rules
-      meterian-reachability.md
+      security-audit.md            # Continue.dev rules
+      reachability-analysis.md
   GEMINI.md                        # Gemini CLI context
   gemini-extension.json            # Gemini extension config
   AGENTS.md                        # Codex CLI context

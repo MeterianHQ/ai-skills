@@ -1,8 +1,8 @@
 {
-  "name": "meterian-security-audit",
+  "name": "meterian",
   "displayName": "Meterian Security Audit",
   "description": "Audit open-source dependencies for vulnerabilities and perform reachability analysis using the Meterian CLI",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Meterian",
     "email": "support@meterian.io"

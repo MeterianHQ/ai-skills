@@ -1,5 +1,5 @@
 ---
-name: meterian-security-audit
+name: security-audit
 description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, or remediating vulnerable libraries. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
 metadata:
   short-description: Audit dependencies for vulnerabilities and get remediation advice
@@ -63,7 +63,7 @@ If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N pack
 
 6. After offering remediation (step 5) but before applying any fixes, if any vulnerabilities were found, ask:
    > "Would you like me to also run a reachability analysis to determine which of these vulnerabilities are actually exploitable in your codebase?"
-   - If yes → invoke the `meterian-reachability` skill, including the list of vulnerable packages (name, version, CVE ID) in the invocation prompt
+   - If yes → invoke the `reachability-analysis` skill, including the list of vulnerable packages (name, version, CVE ID) in the invocation prompt
    - If no → end the audit flow
 
 ## Mode B — Ad-hoc Security Query
