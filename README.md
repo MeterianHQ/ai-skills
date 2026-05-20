@@ -78,11 +78,19 @@ Continue will load the rules files and apply them based on the `globs` and `alwa
 
 ### Gemini CLI
 
-Add `gemini-extension.json` and `GEMINI.md` to your project, or install the extension via Gemini CLI's extension manager.
+Copy `gemini-extension.json` and `GEMINI.md` to your project root. `GEMINI.md` is not project documentation — it contains `@`-include directives that load the skill content into Gemini CLI's context automatically.
+
+```bash
+cp gemini-extension.json GEMINI.md your-project/
+```
 
 ### Codex CLI
 
-Add `AGENTS.md` to your project root, or reference this repository in your Codex configuration.
+Copy `AGENTS.md` to your project root. Like `GEMINI.md`, this is a skill delivery file — it uses `@`-include directives to load the skill content into Codex CLI's context, not project documentation.
+
+```bash
+cp AGENTS.md your-project/
+```
 
 ## Prerequisite
 
@@ -118,9 +126,10 @@ ai-skills/
     rules/
       security-audit.md            # Continue.dev rules
       reachability-analysis.md
-  GEMINI.md                        # Gemini CLI context
+  GEMINI.md                        # Gemini CLI skill delivery (@-includes skill content)
   gemini-extension.json            # Gemini extension config
-  AGENTS.md                        # Codex CLI context
+  AGENTS.md                        # Codex CLI skill delivery (@-includes skill content)
+  CLAUDE.md                        # Claude Code project documentation (this repo)
 ```
 
 ## License
