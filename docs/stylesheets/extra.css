@@ -47,6 +47,7 @@
   padding: 0.15rem 0.55rem;
   font-size: 0.78rem;
   color: var(--md-primary-fg-color);
+  white-space: nowrap;
 }
 
 /* ── Ecosystem tags ── */
@@ -81,9 +82,24 @@
   border-color: hsla(var(--md-hue),15%,28%,1);
 }
 
-/* ── Homepage product cards — force 3 equal columns ── */
+/* ── Narrower sidebars → wider content area ── */
+:root {
+  --md-sidebar-width: 9.6rem;
+}
+
+/* ── Homepage product cards — 3 equal columns, aligned content ── */
 .grid.products {
   grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* Push code block + link to the bottom of each card */
+.grid.products > ul > li {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.grid.products > ul > li > .highlight,
+.grid.products > ul > li > p:last-child {
+  margin-top: auto;
 }
 
 @media screen and (max-width: 59.9375em) {
