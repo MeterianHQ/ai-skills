@@ -555,8 +555,8 @@ echo '[{"language":"nodejs","name":"lodash","version":"4.17.15"}]' \
 
 ## Next steps
 
-- [Commands reference](commands.md)
-- [Supported languages](languages.md)
+- [Commands reference](../../cli/commands.md)
+- [Supported languages](../../cli/languages.md)
 ```
 
 - [ ] **Step 2: Create `docs/cli/commands.md`**
