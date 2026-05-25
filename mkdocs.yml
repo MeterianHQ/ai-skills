@@ -1,0 +1,78 @@
+site_name: Meterian AI
+site_url: https://meterianhq.github.io/ai-skills/
+site_description: >-
+  Security scanning for every developer workflow —
+  CLI, AI Skills, and MCP Server.
+site_author: Meterian
+repo_url: https://github.com/MeterianHQ/ai-skills
+repo_name: MeterianHQ/ai-skills
+edit_uri: ""
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - CLI:
+    - Overview: cli/index.md
+    - Commands: cli/commands.md
+    - Supported Languages: cli/languages.md
+  - AI Skills:
+    - Overview: skills/index.md
+    - Security Audit: skills/security-audit.md
+    - Reachability Analysis: skills/reachability-analysis.md
+    - Installation:
+      - Overview: skills/installation/index.md
+      - Claude Code: skills/installation/claude-code.md
+      - Cursor: skills/installation/cursor.md
+      - GitHub Copilot: skills/installation/copilot.md
+      - Windsurf: skills/installation/windsurf.md
+      - Cline: skills/installation/cline.md
+      - Aider: skills/installation/aider.md
+      - Continue.dev: skills/installation/continue.md
+      - Gemini CLI: skills/installation/gemini.md
+      - Codex CLI: skills/installation/codex.md
+  - MCP Server:
+    - Overview: mcp/index.md
+    - Tools Reference: mcp/tools.md
+    - Installation: mcp/installation.md
+    - Supported Clients: mcp/clients.md
+    - Prompts & Examples: mcp/prompts.md
+  - FAQ: faq.md
