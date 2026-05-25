@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 <div class="hero" markdown>
 <span class="eyebrow">Free &nbsp;·&nbsp; No account required</span>
 

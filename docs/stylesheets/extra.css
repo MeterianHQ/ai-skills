@@ -82,9 +82,24 @@
   border-color: hsla(var(--md-hue),15%,28%,1);
 }
 
-/* ── Narrower sidebars → wider content area ── */
-:root {
-  --md-sidebar-width: 9.6rem;
+/* ── Wider overall layout ── */
+/* Material default is 61rem — widen it so content has more room */
+.md-grid {
+  max-width: 75rem;
+}
+
+/* Narrow the nav sidebar (Material hardcodes 12.1rem) */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar {
+    width: 10rem;
+  }
+  /* Adjust content inner margin to match narrower sidebars */
+  [dir=ltr] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 0.8rem;
+  }
+  [dir=ltr] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-right: 0.8rem;
+  }
 }
 
 /* ── Homepage product cards — 3 equal columns, aligned content ── */
