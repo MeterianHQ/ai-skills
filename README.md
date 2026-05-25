@@ -2,6 +2,8 @@
 
 Security vulnerability scanning and reachability analysis skills for AI coding assistants.
 
+**Documentation:** https://meterianhq.github.io/ai-skills/
+
 ## Skills
 
 ### `meterian:security-audit`
