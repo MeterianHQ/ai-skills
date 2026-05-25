@@ -16,7 +16,7 @@ Covers 12+ ecosystems.
 
 Three ways to add Meterian security to your workflow — pick the one that fits your setup.
 
-<div class="grid cards" markdown>
+<div class="grid cards products" markdown>
 
 -   ⚡ **CLI**
 

@@ -80,3 +80,14 @@
   background: hsla(var(--md-hue),15%,18%,1);
   border-color: hsla(var(--md-hue),15%,28%,1);
 }
+
+/* ── Homepage product cards — force 3 equal columns ── */
+.grid.products {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+@media screen and (max-width: 59.9375em) {
+  .grid.products {
+    grid-template-columns: 1fr !important;
+  }
+}
