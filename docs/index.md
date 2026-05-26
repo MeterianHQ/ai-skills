@@ -73,29 +73,12 @@ The CLI is the engine underneath everything. AI Skills teach your coding assista
 to invoke it directly. The MCP Server exposes the same vulnerability data as a
 live protocol endpoint — without requiring any CLI installation on the client side.
 
-<div class="arch-diagram" markdown>
-<div class="arch-db">Meterian Kiwi database</div>
-<div class="arch-arrow-down">↓</div>
-<div class="arch-cli">@meterian/cli</div>
-<div class="arch-branches">
-  <div class="arch-branch">
-    <div class="arch-arrow-down">↓</div>
-    <div class="arch-box">
-      <strong>AI Skills</strong><br>
-      <span>npx @meterian/cli</span><br>
-      <span>9 coding assistants</span>
-    </div>
-  </div>
-  <div class="arch-branch">
-    <div class="arch-arrow-down">↓</div>
-    <div class="arch-box">
-      <strong>MCP Server</strong><br>
-      <span>JSON-RPC 2.0 / MCP</span><br>
-      <span>Any MCP-compatible client</span>
-    </div>
-  </div>
-</div>
-</div>
+``` mermaid
+graph TD
+    DB[Meterian Kiwi database] --> CLI["@meterian/cli"]
+    CLI --> AI["AI Skills<br/>npx @meterian/cli<br/>9 coding assistants"]
+    CLI --> MCP["MCP Server<br/>JSON-RPC 2.0 / MCP<br/>Any MCP-compatible client"]
+```
 
 ## Supported ecosystems
 
