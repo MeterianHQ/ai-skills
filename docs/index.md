@@ -6,10 +6,10 @@ hide:
 <div class="hero" markdown>
 <span class="eyebrow">Free &nbsp;·&nbsp; No account required</span>
 
-# Security scanning for every developer workflow
+# Your AI coding assistant, now security-aware
 
-Audit open-source dependencies for known vulnerabilities — from the command line,
-through your AI coding assistant, or via the Model Context Protocol.
+Meterian teaches your AI tools to scan dependencies and suggest safe upgrades —
+inline, as you work. Supports 9 AI assistants and any MCP-compatible client.
 Covers 12+ ecosystems.
 
 <div class="hero-badges" markdown>
