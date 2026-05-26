@@ -69,9 +69,10 @@ Three ways to add Meterian security to your workflow — pick the one that fits 
 
 ## How they relate
 
-The CLI is the engine underneath everything. AI Skills teach your coding assistant
-to invoke it directly. The MCP Server exposes the same vulnerability data as a
-live protocol endpoint — without requiring any CLI installation on the client side.
+All three products draw from the same source: the Meterian Kiwi database of
+known vulnerabilities. The CLI and the MCP Server each query it directly and
+independently. AI Skills sit on top of the CLI — they teach your coding
+assistant to invoke it, so no separate network connection is needed.
 
 ``` mermaid
 graph TD
