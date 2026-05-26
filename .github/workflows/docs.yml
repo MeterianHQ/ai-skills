@@ -18,5 +18,6 @@ jobs:
         with:
           python-version: 3.x
           cache: pip
+          cache-dependency-path: requirements-docs.txt
       - run: pip install -r requirements-docs.txt
       - run: mkdocs gh-deploy --force
