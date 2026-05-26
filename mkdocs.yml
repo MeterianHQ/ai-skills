@@ -1,4 +1,4 @@
-site_name: Meterian AI
+site_name: Meterian AI - Skills and Tools
 site_url: https://meterianhq.github.io/ai-skills/
 site_description: >-
   Security scanning for every developer workflow —
@@ -36,6 +36,9 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
 
 markdown_extensions:
   - admonition
