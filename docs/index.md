@@ -76,8 +76,8 @@ live protocol endpoint — without requiring any CLI installation on the client 
 ``` mermaid
 graph TD
     DB[Meterian Kiwi database] --> CLI["@meterian/cli"]
+    DB --> MCP["MCP Server · @meterian/mcp<br/>JSON-RPC 2.0 / MCP<br/>Any MCP-compatible client"]
     CLI --> AI["AI Skills<br/>npx @meterian/cli<br/>9 coding assistants"]
-    CLI --> MCP["MCP Server<br/>JSON-RPC 2.0 / MCP<br/>Any MCP-compatible client"]
 ```
 
 ## Supported ecosystems
