@@ -1,1 +1,5 @@
 .superpowers/
+.tessl/
+*.tgz
+site/
+.claude/
