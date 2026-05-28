@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent correctly maps a go.mod file to the golang language parameter (not 'go'), extracts module dependencies with their pinned versions, and formats the CLI invocation and report correctly.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "golang language",
+      "description": "Sets language to `golang` for Go module packages (not `go`, `gomod`, or `modules`)",
+      "max_score": 25
+    },
+    {
+      "name": "go.mod extraction",
+      "description": "Extracts dependency names and pinned versions from go.mod (e.g. github.com/gin-gonic/gin at v1.7.2)",
+      "max_score": 20
+    },
+    {
+      "name": "JSON array format",
+      "description": "Constructs a JSON array of `{language, name, version}` objects and pipes it to the CLI check command",
+      "max_score": 20
+    },
+    {
+      "name": "npx check command",
+      "description": "Invokes `npx @meterian/cli check` to run the scan",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with columns for Package, Version, Severity, ID, and Safe Versions",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with vulnerability count and total packages checked",
+      "max_score": 10
+    }
+  ]
+}

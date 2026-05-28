@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent correctly identifies a .csproj file, maps it to the dotnet language parameter, extracts NuGet PackageReference versions, and produces a correctly formatted audit report.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "dotnet language",
+      "description": "Sets language to `dotnet` for NuGet packages (not `csharp`, `net`, `.net`, `nuget`, or `cs`)",
+      "max_score": 25
+    },
+    {
+      "name": "csproj discovery",
+      "description": "Discovers the .csproj file using a Glob pattern (e.g. *.csproj) rather than hardcoding the filename",
+      "max_score": 18
+    },
+    {
+      "name": "PackageReference extraction",
+      "description": "Extracts package names and versions from the PackageReference elements in the .csproj file",
+      "max_score": 18
+    },
+    {
+      "name": "JSON array format",
+      "description": "Constructs a JSON array of `{language, name, version}` objects and pipes it to `npx @meterian/cli check`",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with the required audit columns (Package, Version, Severity, ID, Safe Versions)",
+      "max_score": 12
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with vulnerability and package counts",
+      "max_score": 12
+    }
+  ]
+}

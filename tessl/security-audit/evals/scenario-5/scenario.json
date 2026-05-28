@@ -1,0 +1,1 @@
+{ "description": "Go module audit with golang language mapping", "include": ["./inputs"] }

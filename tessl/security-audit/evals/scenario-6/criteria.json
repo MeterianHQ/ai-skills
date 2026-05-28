@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent maps the Ruby manifest to the ruby language parameter, prefers Gemfile.lock pinned versions over Gemfile ranges, and correctly formats the CLI command and report.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "ruby language",
+      "description": "Sets language to `ruby` for gem packages (not `gem`, `rubygems`, or `rails`)",
+      "max_score": 20
+    },
+    {
+      "name": "Gemfile.lock preferred",
+      "description": "Extracts dependency versions from `Gemfile.lock` rather than the version ranges in `Gemfile`",
+      "max_score": 25
+    },
+    {
+      "name": "Pinned versions used",
+      "description": "The versions sent to the CLI match the pinned versions in Gemfile.lock (e.g. rails 5.2.3, nokogiri 1.9.1) rather than Gemfile ranges",
+      "max_score": 20
+    },
+    {
+      "name": "JSON array format",
+      "description": "Constructs a JSON array of `{language, name, version}` objects and pipes it to `npx @meterian/cli check`",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with audit result columns (Package, Version, Severity, ID, Safe Versions)",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with vulnerability and package counts",
+      "max_score": 10
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'rails', '>= 5.2', '< 6.1'
+gem 'nokogiri', '>= 1.8'
+gem 'devise', '>= 4.5'
+gem 'activerecord', '>= 5.2'
+gem 'carrierwave', '>= 1.2'
+gem 'rack', '>= 2.0'

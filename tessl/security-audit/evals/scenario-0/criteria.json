@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent uses the Meterian CLI correctly for a Node.js audit: invokes via npx, prefers the lock file for pinned versions, constructs the correct JSON input format, and formats the report as a markdown table with the required summary and follow-up offer.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "npx invocation",
+      "description": "Uses `npx @meterian/cli` to invoke the CLI (not just `meterian` as a bare command without npx)",
+      "max_score": 10
+    },
+    {
+      "name": "Lock file preferred",
+      "description": "Extracts dependency versions from `package-lock.json` (pinned versions) rather than the version ranges in `package.json`",
+      "max_score": 12
+    },
+    {
+      "name": "nodejs language",
+      "description": "Sets language to `nodejs` for the npm packages (not `node`, `javascript`, or `npm`)",
+      "max_score": 10
+    },
+    {
+      "name": "JSON array format",
+      "description": "Constructs a JSON array where each element has exactly the fields `language`, `name`, and `version`",
+      "max_score": 10
+    },
+    {
+      "name": "Pipe to check command",
+      "description": "Passes the JSON array to the CLI via stdin pipe: `echo '<json>' | npx @meterian/cli check`",
+      "max_score": 10
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table presenting audit results",
+      "max_score": 10
+    },
+    {
+      "name": "Correct table headers",
+      "description": "Table includes all five columns: Package, Version, Severity, ID, Safe Versions (in any order or capitalisation)",
+      "max_score": 12
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line of the form \"X vulnerabilities found across Y packages (Z clean)\" or equivalent phrasing referencing total and clean counts",
+      "max_score": 12
+    },
+    {
+      "name": "Remediation offer",
+      "description": "Report or accompanying text offers to perform remediation (upgrade vulnerable packages) if any vulnerabilities were found",
+      "max_score": 8
+    },
+    {
+      "name": "Reachability mention",
+      "description": "Report or accompanying text mentions the option of reachability analysis if vulnerabilities were found",
+      "max_score": 6
+    }
+  ]
+}

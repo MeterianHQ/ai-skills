@@ -1,5 +1,5 @@
 {
-  "name": "ai-skills",
+  "name": "meterian/ai-skills",
   "mode": "vendored",
   "dependencies": {
     "local/security-audit": {

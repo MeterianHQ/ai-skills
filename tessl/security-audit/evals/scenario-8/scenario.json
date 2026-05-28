@@ -1,0 +1,1 @@
+{ "description": ".NET csproj audit with dotnet language mapping", "include": ["./inputs"] }

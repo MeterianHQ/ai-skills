@@ -1,0 +1,1 @@
+{ "description": "Python lock file preferred over requirements.txt", "include": ["./inputs"] }

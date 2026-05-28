@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent uses the correct Mode B ad-hoc advisory lookup command format with the right subcommand, language, package name, and version — and then reports each advisory with all required fields.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Advisories subcommand",
+      "description": "Uses the `advisories get` subcommand (not `check` or any other subcommand)",
+      "max_score": 20
+    },
+    {
+      "name": "npx invocation",
+      "description": "Invokes the CLI via `npx @meterian/cli advisories get ...` (not a bare `meterian` command)",
+      "max_score": 12
+    },
+    {
+      "name": "Correct language",
+      "description": "Passes `python` as the language argument (not `py`, `pip`, or `python3`)",
+      "max_score": 18
+    },
+    {
+      "name": "Package name in command",
+      "description": "Passes `urllib3` as the package name argument in the CLI command",
+      "max_score": 15
+    },
+    {
+      "name": "Version in command",
+      "description": "Passes `1.24.1` as the version argument in the CLI command",
+      "max_score": 15
+    },
+    {
+      "name": "Severity reported",
+      "description": "Report lists the severity level for each advisory found",
+      "max_score": 7
+    },
+    {
+      "name": "ID reported",
+      "description": "Report lists the advisory ID (CVE or similar) for each advisory found",
+      "max_score": 7
+    },
+    {
+      "name": "Description reported",
+      "description": "Report includes a description of each advisory found",
+      "max_score": 6
+    }
+  ]
+}

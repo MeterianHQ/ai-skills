@@ -1,0 +1,41 @@
+{
+  "context": "Tests whether the agent correctly identifies that poetry.lock should take precedence over requirements.txt for version extraction, maps the manifest to the python language, and constructs the correct CLI invocation and report format.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "python language",
+      "description": "Sets language to `python` for the packages (not `py`, `pip`, or `python3`)",
+      "max_score": 15
+    },
+    {
+      "name": "Lock file preferred",
+      "description": "Extracts dependency versions from `poetry.lock` rather than the version ranges in `requirements.txt`",
+      "max_score": 18
+    },
+    {
+      "name": "Pinned versions used",
+      "description": "The versions sent to the CLI match the pinned versions in poetry.lock (e.g. django 2.2.4, requests 2.22.0) — not the lower-bound ranges from requirements.txt (e.g. django 2.0)",
+      "max_score": 17
+    },
+    {
+      "name": "JSON array format",
+      "description": "Constructs a JSON array where each element has exactly the fields `language`, `name`, and `version`",
+      "max_score": 15
+    },
+    {
+      "name": "Check command",
+      "description": "Passes the JSON dependency array to the CLI via `npx @meterian/cli check`",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with audit results and correct column headers (Package, Version, Severity, ID, Safe Versions)",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line referencing total vulnerabilities found and count of clean packages",
+      "max_score": 10
+    }
+  ]
+}

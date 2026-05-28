@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent discovers all three manifest files in the inputs directory, assigns the correct language to each ecosystem, and combines all packages into a single JSON array passed to one CLI check invocation.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Finds all manifests",
+      "description": "Scans for all three manifest types: package.json (Node.js), Cargo.toml (Rust), and requirements.txt (Python)",
+      "max_score": 12
+    },
+    {
+      "name": "nodejs language",
+      "description": "Assigns language `nodejs` to packages from package.json",
+      "max_score": 12
+    },
+    {
+      "name": "rust language",
+      "description": "Assigns language `rust` to packages from Cargo.toml (not `cargo` or `rs`)",
+      "max_score": 12
+    },
+    {
+      "name": "python language",
+      "description": "Assigns language `python` to packages from requirements.txt (not `pip` or `py`)",
+      "max_score": 12
+    },
+    {
+      "name": "Combined JSON array",
+      "description": "All packages from all three manifests are combined into a single JSON array with `{language, name, version}` objects",
+      "max_score": 15
+    },
+    {
+      "name": "Single check invocation",
+      "description": "Passes the combined JSON array to `npx @meterian/cli check` in one command (not separate per-language commands)",
+      "max_score": 12
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with the required audit columns (Package, Version, Severity, ID, Safe Versions)",
+      "max_score": 13
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line referencing total vulnerability count and package counts",
+      "max_score": 12
+    }
+  ]
+}
