@@ -31,8 +31,11 @@ Skill identifiers follow the format `plugin-name:skill-name`:
 | Gemini CLI | `GEMINI.md` + `gemini-extension.json` | `@` includes pointing to `skills/` |
 | Codex CLI | `AGENTS.md` | `@` includes pointing to `skills/` |
 | Cursor | `.cursor-plugin/plugin.json` | Plugin manifest only; skill content from `skills/` |
+| Tessl | `tessl/*/SKILL.md` + `tessl/*/tile.json` | Independent copies, tessl-optimised; see `tessl/CLAUDE.md` |
 
 When editing skill content, **propagate changes to all tool-specific files** — particularly `.windsurf/rules/`, `.continue/rules/`, and `.github/copilot-instructions.md`, which contain adapted copies rather than includes.
+
+The `tessl/` directory holds independent copies of skill content tuned for the Tessl package manager (different metadata, bundled reference files). Changes there do not automatically propagate to `skills/` — sync manually when stable.
 
 ## Versioning
 
