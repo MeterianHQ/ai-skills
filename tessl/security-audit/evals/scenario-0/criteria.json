@@ -1,31 +1,26 @@
 {
-  "context": "Tests whether the agent uses the Meterian CLI correctly for a Node.js audit: invokes via npx, prefers the lock file for pinned versions, constructs the correct JSON input format, and formats the report as a markdown table with the required summary and follow-up offer.",
+  "context": "Tests whether the agent uses the Meterian CLI correctly for a Node.js audit. CLI invocation is verified via Meterian-specific format in scan-raw.json (vulnerable/summary structure, safeVersions field, language:nodejs) rather than unverifiable command strings.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "npx invocation",
-      "description": "Uses `npx @meterian/cli` to invoke the CLI (not just `meterian` as a bare command without npx)",
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
+      "max_score": 10
+    },
+    {
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by npm audit or web search",
+      "max_score": 10
+    },
+    {
+      "name": "nodejs language",
+      "description": "Entries in `scan-raw.json` carry `\"language\":\"nodejs\"` — confirming the correct language parameter was used",
       "max_score": 10
     },
     {
       "name": "Lock file preferred",
       "description": "Extracts dependency versions from `package-lock.json` (pinned versions) rather than the version ranges in `package.json`",
       "max_score": 12
-    },
-    {
-      "name": "nodejs language",
-      "description": "Sets language to `nodejs` for the npm packages (not `node`, `javascript`, or `npm`)",
-      "max_score": 10
-    },
-    {
-      "name": "JSON array format",
-      "description": "Constructs a JSON array where each element has exactly the fields `language`, `name`, and `version`",
-      "max_score": 10
-    },
-    {
-      "name": "Pipe to check command",
-      "description": "Passes the JSON array to the CLI via stdin pipe: `echo '<json>' | npx @meterian/cli check`",
-      "max_score": 10
     },
     {
       "name": "Markdown table",

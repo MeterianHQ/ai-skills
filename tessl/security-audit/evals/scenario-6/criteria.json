@@ -1,10 +1,10 @@
 {
-  "context": "Tests whether the agent maps the Ruby manifest to the ruby language parameter, prefers Gemfile.lock pinned versions over Gemfile ranges, and correctly formats the CLI command and report.",
+  "context": "Tests whether the agent maps the Ruby manifest to the ruby language parameter, prefers Gemfile.lock pinned versions over Gemfile ranges, and invokes the Meterian CLI. CLI invocation verified via scan-raw.json Meterian format.",
   "type": "weighted_checklist",
   "checklist": [
     {
       "name": "ruby language",
-      "description": "Sets language to `ruby` for gem packages (not `gem`, `rubygems`, or `rails`)",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"ruby\"` — confirming the correct language parameter (not `gem`, `rubygems`, or `rails`)",
       "max_score": 20
     },
     {
@@ -14,12 +14,12 @@
     },
     {
       "name": "Pinned versions used",
-      "description": "The versions sent to the CLI match the pinned versions in Gemfile.lock (e.g. rails 5.2.3, nokogiri 1.9.1) rather than Gemfile ranges",
+      "description": "The versions in `scan-raw.json` match the pinned versions in Gemfile.lock (e.g. rails 5.2.3, nokogiri 1.9.1) rather than Gemfile ranges",
       "max_score": 20
     },
     {
-      "name": "JSON array format",
-      "description": "Constructs a JSON array of `{language, name, version}` objects and pipes it to `npx @meterian/cli check`",
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
       "max_score": 15
     },
     {

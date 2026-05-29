@@ -9,3 +9,5 @@ The service has been running in production for over a year and some of the libra
 ## Output Specification
 
 Audit all Maven dependencies declared in the project and save the findings to `security-report.md`. The report should list each dependency, flag any known vulnerabilities with their severity and CVE identifiers, and include a summary count of vulnerable versus clean packages.
+
+Also save the raw scan data to `scan-raw.json`.

@@ -43,8 +43,6 @@ When asked to audit, scan, or check all dependencies:
 echo '<json-array>' | npx @meterian/cli check
 ```
 
-   Save the raw JSON output to `scan-raw.json` in the workspace.
-
 4. The CLI returns a compact JSON report. Present it as a markdown table:
 
 ```
@@ -73,8 +71,6 @@ When asked "is [library] [version] safe?" or similar:
 ```bash
 npx @meterian/cli advisories get <language> <name> <version>
 ```
-
-   Save the raw JSON output to `advisory-raw.json` in the workspace.
 
 4. Report findings inline: list each advisory with its severity, id, and description
 

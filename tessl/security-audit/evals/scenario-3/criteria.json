@@ -1,5 +1,5 @@
 {
-  "context": "Tests whether the agent discovers all three manifest files in the inputs directory, assigns the correct language to each ecosystem, and combines all packages into a single JSON array passed to one CLI check invocation.",
+  "context": "Tests whether the agent discovers all three manifest files, assigns the correct language to each ecosystem, and combines all packages into a single Meterian CLI check invocation. Verified via scan-raw.json containing all three language types in one file.",
   "type": "weighted_checklist",
   "checklist": [
     {
@@ -9,27 +9,27 @@
     },
     {
       "name": "nodejs language",
-      "description": "Assigns language `nodejs` to packages from package.json",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"nodejs\"` for packages from package.json",
       "max_score": 12
     },
     {
       "name": "rust language",
-      "description": "Assigns language `rust` to packages from Cargo.toml (not `cargo` or `rs`)",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"rust\"` for packages from Cargo.toml (not `cargo` or `rs`)",
       "max_score": 12
     },
     {
       "name": "python language",
-      "description": "Assigns language `python` to packages from requirements.txt (not `pip` or `py`)",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"python\"` for packages from requirements.txt (not `pip` or `py`)",
       "max_score": 12
     },
     {
-      "name": "Combined JSON array",
-      "description": "All packages from all three manifests are combined into a single JSON array with `{language, name, version}` objects",
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array covering all three ecosystems in a single scan",
       "max_score": 15
     },
     {
-      "name": "Single check invocation",
-      "description": "Passes the combined JSON array to `npx @meterian/cli check` in one command (not separate per-language commands)",
+      "name": "Single scan",
+      "description": "A single `scan-raw.json` covers packages from all three ecosystems — not separate files per language — confirming one combined CLI invocation",
       "max_score": 12
     },
     {

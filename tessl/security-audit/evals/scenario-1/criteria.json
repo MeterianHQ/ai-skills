@@ -1,10 +1,10 @@
 {
-  "context": "Tests whether the agent correctly identifies that poetry.lock should take precedence over requirements.txt for version extraction, maps the manifest to the python language, and constructs the correct CLI invocation and report format.",
+  "context": "Tests whether the agent correctly identifies that poetry.lock should take precedence over requirements.txt for version extraction, maps the manifest to the python language, and invokes the Meterian CLI. CLI invocation verified via Meterian-specific format in scan-raw.json rather than unverifiable command strings.",
   "type": "weighted_checklist",
   "checklist": [
     {
       "name": "python language",
-      "description": "Sets language to `python` for the packages (not `py`, `pip`, or `python3`)",
+      "description": "Entries in `scan-raw.json` carry `\"language\":\"python\"` — confirming the correct language parameter was used (not `py`, `pip`, or `python3`)",
       "max_score": 15
     },
     {
@@ -14,17 +14,17 @@
     },
     {
       "name": "Pinned versions used",
-      "description": "The versions sent to the CLI match the pinned versions in poetry.lock (e.g. django 2.2.4, requests 2.22.0) — not the lower-bound ranges from requirements.txt (e.g. django 2.0)",
+      "description": "The versions in `scan-raw.json` match the pinned versions in poetry.lock (e.g. django 2.2.4, requests 2.22.0) — not the lower-bound ranges from requirements.txt (e.g. django 2.0)",
       "max_score": 17
     },
     {
-      "name": "JSON array format",
-      "description": "Constructs a JSON array where each element has exactly the fields `language`, `name`, and `version`",
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
       "max_score": 15
     },
     {
-      "name": "Check command",
-      "description": "Passes the JSON dependency array to the CLI via `npx @meterian/cli check`",
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by pip-audit or web search",
       "max_score": 15
     },
     {

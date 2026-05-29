@@ -9,3 +9,5 @@ The team currently has no automated scanning in place, so this will be the first
 ## Output Specification
 
 Audit all dependencies across all components and produce a single report saved to `security-report.md`. The report should cover packages from all three components, identify any vulnerabilities, and include a summary of findings.
+
+Also save the raw scan data to `scan-raw.json`.

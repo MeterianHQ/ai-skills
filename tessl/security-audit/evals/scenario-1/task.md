@@ -9,3 +9,5 @@ The project directory (`inputs/`) contains the Python dependency specifications.
 ## Output Specification
 
 Audit all dependencies in the project and produce a vulnerability report saved to `security-report.md`. The report should clearly identify any vulnerable packages, their severity, and which versions are considered safe.
+
+Also save the raw scan data to `scan-raw.json`.

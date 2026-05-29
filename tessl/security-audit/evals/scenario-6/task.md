@@ -9,3 +9,5 @@ The project's gem dependency files are in the `inputs/` directory. The audit sho
 ## Output Specification
 
 Scan the Ruby application's gem dependencies for known vulnerabilities and save the findings to `security-report.md`. The report must list all gems checked, highlight any vulnerabilities with severity and identifiers, and summarise the findings.
+
+Also save the raw scan data to `scan-raw.json`.
