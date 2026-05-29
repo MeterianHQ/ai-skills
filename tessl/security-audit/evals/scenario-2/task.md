@@ -9,3 +9,5 @@ Your job is to look up the security record for this exact library and version an
 ## Output Specification
 
 Produce a file named `advisory-report.md` documenting what you find. For each advisory, include its severity level, identifier, and a brief description of what the issue is.
+
+Also save the raw advisory data to `advisory-raw.json`.

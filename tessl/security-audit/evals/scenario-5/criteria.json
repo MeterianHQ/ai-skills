@@ -1,11 +1,11 @@
 {
-  "context": "Tests whether the agent correctly maps a go.mod file to the golang language parameter (not 'go'), extracts module dependencies with their pinned versions, and formats the CLI invocation and report correctly.",
+  "context": "Tests whether the agent correctly maps a go.mod file to the golang language parameter and invokes the Meterian CLI. CLI invocation is verified via Meterian-specific JSON format in scan-raw.json (vulnerable/summary structure, safeVersions field) rather than unverifiable command strings.",
   "type": "weighted_checklist",
   "checklist": [
     {
       "name": "golang language",
-      "description": "Sets language to `golang` for Go module packages (not `go`, `gomod`, or `modules`)",
-      "max_score": 25
+      "description": "Sets language to `golang` for Go module packages (not `go`, `gomod`, or `modules`) — inferred from correct package data appearing in scan-raw.json or the report",
+      "max_score": 20
     },
     {
       "name": "go.mod extraction",
@@ -13,14 +13,14 @@
       "max_score": 20
     },
     {
-      "name": "JSON array format",
-      "description": "Constructs a JSON array of `{language, name, version}` objects and pipes it to the CLI check command",
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
       "max_score": 20
     },
     {
-      "name": "npx check command",
-      "description": "Invokes `npx @meterian/cli check` to run the scan",
-      "max_score": 15
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by govulncheck, OSV, or web search",
+      "max_score": 20
     },
     {
       "name": "Markdown table",
