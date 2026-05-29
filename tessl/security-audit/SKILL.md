@@ -12,13 +12,14 @@ You have access to the Meterian CLI (`@meterian/cli`). Invoke it via `npx @meter
 
 ## Language Parameter Reference
 
-Always use the following mapping to determine the `language` parameter — use the exact values shown, they are not interchangeable (e.g. Go is `golang` not `go`, .NET is `dotnet` not `csharp`):
+Always use the following mapping to determine the `language` parameter:
 
 | Manifest file | language |
 |---|---|
 | `package.json`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` | `nodejs` |
 | `requirements.txt`, `Pipfile`, `pyproject.toml`, `poetry.lock`, `uv.lock` | `python` |
-| `pom.xml`, `build.gradle`, `build.gradle.kts` | `java` |
+| `pom.xml` | `java` |
+| `build.gradle`, `build.gradle.kts` | `java` |
 | `Cargo.toml`, `Cargo.lock` | `rust` |
 | `composer.json`, `composer.lock` | `php` |
 | `Gemfile`, `Gemfile.lock` | `ruby` |
