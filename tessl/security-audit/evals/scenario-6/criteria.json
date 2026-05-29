@@ -24,7 +24,7 @@
     },
     {
       "name": "Markdown table",
-      "description": "Report contains a markdown table with audit result columns (Package, Version, Severity, ID, Safe Versions)",
+      "description": "Report contains a markdown table with audit result columns (Package, Version, Severity, ID, Safe Version(s))",
       "max_score": 10
     },
     {

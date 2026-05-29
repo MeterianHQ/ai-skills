@@ -24,7 +24,7 @@
     },
     {
       "name": "Markdown table",
-      "description": "Report contains a markdown table with columns for Package, Version, Severity, ID, and Safe Versions",
+      "description": "Report contains a markdown table with columns for Package, Version, Severity, ID, and Safe Version(s)",
       "max_score": 10
     },
     {

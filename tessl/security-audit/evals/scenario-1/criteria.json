@@ -29,7 +29,7 @@
     },
     {
       "name": "Markdown table",
-      "description": "Report contains a markdown table with audit results and correct column headers (Package, Version, Severity, ID, Safe Versions)",
+      "description": "Report contains a markdown table with audit results and all five required column headers: Package, Version, Severity, ID, and Safe Version(s) — singular or plural accepted",
       "max_score": 10
     },
     {

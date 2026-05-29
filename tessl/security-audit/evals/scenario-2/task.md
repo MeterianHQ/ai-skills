@@ -1,10 +1,10 @@
-# Investigating Security Advisories for a Specific Library
+# Security Advisory Lookup: libheif 1.21.2 (Swift)
 
 ## Problem/Feature Description
 
-A backend engineer wants to adopt `urllib3` version `2.6.3` in a new Python HTTP client integration. Before adding it as a dependency, the team wants to know if this specific version has any documented security advisories — the organisation has a policy of zero known vulnerabilities in newly introduced packages.
+An iOS development team is evaluating `libheif` version `1.21.2` as a Swift Package Manager dependency for HEIF image processing in their camera app. Before pinning this version in production, the security team needs a complete picture of any known vulnerabilities — the organisation requires all third-party dependencies to be formally cleared before shipping.
 
-Your job is to look up the security record for this exact library and version and write up your findings so the engineer can make an informed decision.
+Your job is to look up all known security advisories for `libheif` version `1.21.2` and write up your findings so the team can make an informed decision.
 
 ## Output Specification
 

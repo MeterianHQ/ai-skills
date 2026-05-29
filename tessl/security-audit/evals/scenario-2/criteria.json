@@ -1,36 +1,31 @@
 {
-  "context": "Tests whether the agent uses the Meterian CLI for a Mode B advisory lookup. Verifies CLI invocation via Meterian-specific JSON format in advisory-raw.json (versionRange interval notation, source KIWI) rather than checking command strings the scorer cannot see.",
+  "context": "Tests authentic advisory coverage quality for libheif 1.21.2 (Swift). Meterian returns 5 specific CVEs (CVE-2026-41071, CVE-2026-41069, CVE-2026-32740, CVE-2026-32739, CVE-2026-32738) — all published in May 2026, after any model training cutoff. A baseline agent relying on web search or training data cannot find all 5; only the Meterian CLI provides complete coverage. Primary scoring is on completeness and accuracy of advisory content, not format.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Raw advisory data file",
-      "description": "A file named `advisory-raw.json` exists in the workspace containing a JSON array of advisory objects",
-      "max_score": 15
+      "name": "All 5 advisories found",
+      "description": "The report or advisory-raw.json contains all five CVE identifiers: CVE-2026-41071, CVE-2026-41069, CVE-2026-32740, CVE-2026-32739, CVE-2026-32738",
+      "max_score": 40
     },
     {
-      "name": "Meterian format: versionRange",
-      "description": "The advisory objects in `advisory-raw.json` contain a `versionRange` field using mathematical interval notation (e.g. `[1.23,2.7.0)`) — a distinctive Meterian API field not produced by pip-audit, OSV, or web search",
+      "name": "Severity correct",
+      "description": "CVE-2026-41071 and CVE-2026-32740 are reported as HIGH severity; CVE-2026-41069, CVE-2026-32739, CVE-2026-32738 are reported as MEDIUM severity",
       "max_score": 25
     },
     {
-      "name": "Meterian format: source",
-      "description": "The advisory objects in `advisory-raw.json` contain a `source` field with value `KIWI` — the Meterian internal source identifier",
-      "max_score": 20
+      "name": "Descriptions present",
+      "description": "Each of the five advisories includes a meaningful description of the vulnerability (not just a CVE ID)",
+      "max_score": 15
     },
     {
-      "name": "Severity reported",
-      "description": "Report lists the severity level for each advisory found",
-      "max_score": 20
+      "name": "Raw advisory data file",
+      "description": "A file named `advisory-raw.json` exists containing advisory data for libheif",
+      "max_score": 10
     },
     {
-      "name": "ID reported",
-      "description": "Report lists the advisory ID (CVE or similar) for each advisory found",
-      "max_score": 14
-    },
-    {
-      "name": "Description reported",
-      "description": "Report includes a description of each advisory found",
-      "max_score": 6
+      "name": "Meterian format: versionRange",
+      "description": "The advisory objects in `advisory-raw.json` contain a `versionRange` field using mathematical interval notation (e.g. `[0,1.22.0)`) confirming the Meterian CLI was used",
+      "max_score": 10
     }
   ]
 }
