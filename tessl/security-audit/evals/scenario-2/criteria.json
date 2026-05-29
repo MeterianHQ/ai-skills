@@ -24,7 +24,7 @@
     },
     {
       "name": "Version in command",
-      "description": "Passes `1.24.1` as the version argument in the CLI command",
+      "description": "Passes `2.6.3` as the version argument in the CLI command",
       "max_score": 15
     },
     {

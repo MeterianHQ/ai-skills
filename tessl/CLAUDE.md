@@ -64,6 +64,32 @@ tessl eval run ./tessl/security-audit/evals/scenario-0 \
   --agent claude:claude-sonnet-4-6 --workspace meterian
 ```
 
+After every `tessl eval run`, save the full scorer reasoning to `tessl/eval-logs/<run-id>.txt`:
+
+```bash
+RUN_ID=<run-id>
+tessl eval view --json $RUN_ID | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+output = []
+for s in data['data']['attributes']['scenarios']:
+    output.append('=' * 80)
+    output.append('SCENARIO: ' + s['task'].split('\n')[0].strip('# '))
+    for sol in s['solutions']:
+        output.append('')
+        output.append(f'  VARIANT: {sol[\"variant\"]}')
+        output.append(f'  ACTIVATED: {sol.get(\"activation\", {}).get(\"activatedSkills\", [])}')
+        for r in sol['assessmentResults']:
+            output.append(f'')
+            output.append(f'  [{r[\"score\"]}/{r[\"max_score\"]}] {r[\"name\"]}')
+            output.append(f'  REASONING: {r[\"reasoning\"]}')
+    output.append('')
+print('\n'.join(output))
+" > ./tessl/eval-logs/${RUN_ID}.txt
+```
+
+The `tessl/eval-logs/` directory is gitignored. Name files by run ID so multiple runs are preserved.
+
 ### Running evals locally with Codex
 
 For local iteration, use the test project at `/home/bbossola/projects/spikes/codex`, which has the skill installed and network access configured. Prerequisites:

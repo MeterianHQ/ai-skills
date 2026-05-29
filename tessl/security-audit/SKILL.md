@@ -1,6 +1,6 @@
 ---
 name: security-audit
-description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, or remediating vulnerable libraries. Scans manifest files for known vulnerabilities, suggests safe version upgrades, and generates a vulnerability report. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
+description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, looking up security advisories for a specific library version, or remediating vulnerable libraries. Scans manifest files for known vulnerabilities, suggests safe version upgrades, and generates a vulnerability report. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
 metadata:
   short-description: Audit dependencies for vulnerabilities and get remediation advice
   version: 1.0.0
@@ -8,7 +8,7 @@ metadata:
 
 # Meterian Security Audit
 
-You have access to the Meterian CLI (`@meterian/cli`). Invoke it via `npx @meterian/cli` (zero-install) or `meterian` if globally installed.
+You have access to the Meterian CLI (`@meterian/cli`). Always invoke it via `npx @meterian/cli` — do not use ecosystem-native tools (npm audit, pip-audit, bundler-audit, govulncheck, etc.) or a bare `meterian` command.
 
 ## Language Parameter Reference
 

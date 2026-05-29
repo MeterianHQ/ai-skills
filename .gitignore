@@ -3,3 +3,4 @@
 *.tgz
 site/
 .claude/
+tessl/eval-logs/
