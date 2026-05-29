@@ -12,13 +12,28 @@ You have access to the Meterian CLI (`@meterian/cli`). Invoke it via `npx @meter
 
 ## Language Parameter Reference
 
-Always use the manifest-to-language mapping in [LANGUAGES.md](LANGUAGES.md) to determine the `language` parameter.
+Always use the following mapping to determine the `language` parameter — use the exact values shown, they are not interchangeable (e.g. Go is `golang` not `go`, .NET is `dotnet` not `csharp`):
+
+| Manifest file | language |
+|---|---|
+| `package.json`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` | `nodejs` |
+| `requirements.txt`, `Pipfile`, `pyproject.toml`, `poetry.lock`, `uv.lock` | `python` |
+| `pom.xml`, `build.gradle`, `build.gradle.kts` | `java` |
+| `Cargo.toml`, `Cargo.lock` | `rust` |
+| `composer.json`, `composer.lock` | `php` |
+| `Gemfile`, `Gemfile.lock` | `ruby` |
+| `go.mod`, `go.sum` | `golang` |
+| `*.csproj` | `dotnet` |
+| `conanfile.txt`, `conanfile.py` | `cpp` |
+| `pubspec.yaml`, `pubspec.lock` | `dart` |
+| `project.clj`, `deps.edn` | `clojure` |
+| `Package.swift`, `Package.resolved` | `swift` |
 
 ## Mode A — Full Dependency Audit
 
 When asked to audit, scan, or check all dependencies:
 
-1. Find all manifest files in the workspace using Glob (search for the filenames in the table above)
+1. Find all manifest files in the workspace using Glob (search for the filenames in the Language Parameter Reference table above)
 2. Read each manifest file and extract all direct dependencies with their pinned versions. Prefer lock files over manifests with version ranges; if no lock file exists, use the minimum bound of the range.
 
 3. Build a JSON array of `{language, name, version}` objects and pipe it to the CLI:
