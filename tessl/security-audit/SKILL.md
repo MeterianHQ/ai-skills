@@ -58,7 +58,7 @@ echo '<json-array>' | npx @meterian/cli check
 
 If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N packages."
 
-5. If vulnerabilities were found, offer remediation (Mode C) and ask if the user wants a reachability analysis. If yes → invoke the `reachability-analysis` skill with the list of vulnerable packages (name, version, CVE ID). If no → end the audit flow.
+5. If vulnerabilities are present, always include in the report or response: a note that reachability analysis is available to determine which vulnerabilities are actually exploitable, and an offer to run it. If yes, invoke `reachability-analysis` with vulnerable packages (name, version, CVE ID). Always offer remediation guidance (Mode C).
 
 ## Mode B — Ad-hoc Security Query
 
