@@ -1,30 +1,30 @@
 {
-  "context": "Tests authentic advisory coverage quality for libheif 1.21.2 (Swift). Meterian returns 5 specific CVEs (CVE-2026-41071, CVE-2026-41069, CVE-2026-32740, CVE-2026-32739, CVE-2026-32738) — all published in May 2026, after any model training cutoff. A baseline agent relying on web search or training data cannot find all 5; only the Meterian CLI provides complete coverage. Primary scoring is on completeness and accuracy of advisory content, not format.",
+  "context": "Tests authentic advisory coverage for squirrel 3.0 (C++/Conan). Meterian returns 6 advisories: CVE-2026-9541, CVE-2026-3388, CVE-2026-3389, CVE-2026-2661, CVE-2026-2659 (2026 CVEs, likely not findable via web search) and CVE-2021-41556 (CRITICAL, publicly known). Primary scoring on completeness — how many of the 6 advisories the agent finds.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "All 5 advisories found",
-      "description": "The report or advisory-raw.json contains all five CVE identifiers: CVE-2026-41071, CVE-2026-41069, CVE-2026-32740, CVE-2026-32739, CVE-2026-32738",
+      "name": "All 6 advisories found",
+      "description": "The report or advisory-raw.json contains all six CVE identifiers: CVE-2026-9541, CVE-2026-3388, CVE-2026-3389, CVE-2026-2661, CVE-2026-2659, CVE-2021-41556",
       "max_score": 40
     },
     {
       "name": "Severity correct",
-      "description": "CVE-2026-41071 and CVE-2026-32740 are reported as HIGH severity; CVE-2026-41069, CVE-2026-32739, CVE-2026-32738 are reported as MEDIUM severity",
+      "description": "CVE-2021-41556 is CRITICAL, CVE-2026-2661 and CVE-2026-2659 are HIGH, CVE-2026-9541, CVE-2026-3388 and CVE-2026-3389 are MEDIUM",
       "max_score": 25
     },
     {
       "name": "Descriptions present",
-      "description": "Each of the five advisories includes a meaningful description of the vulnerability (not just a CVE ID)",
+      "description": "Each of the six advisories includes a meaningful description of the vulnerability",
       "max_score": 15
     },
     {
       "name": "Raw advisory data file",
-      "description": "A file named `advisory-raw.json` exists containing advisory data for libheif",
+      "description": "A file named `advisory-raw.json` exists containing advisory data for squirrel",
       "max_score": 10
     },
     {
       "name": "Meterian format: versionRange",
-      "description": "The advisory objects in `advisory-raw.json` contain a `versionRange` field using mathematical interval notation (e.g. `[0,1.22.0)`) confirming the Meterian CLI was used",
+      "description": "The advisory objects in `advisory-raw.json` contain a `versionRange` field using mathematical interval notation confirming the Meterian CLI was used",
       "max_score": 10
     }
   ]

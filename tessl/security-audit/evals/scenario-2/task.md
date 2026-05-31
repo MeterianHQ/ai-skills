@@ -1,10 +1,10 @@
-# Security Advisory Lookup: libheif 1.21.2 (Swift)
+# Security Advisory Lookup: squirrel 3.0 (C++)
 
 ## Problem/Feature Description
 
-An iOS development team is evaluating `libheif` version `1.21.2` as a Swift Package Manager dependency for HEIF image processing in their camera app. Before pinning this version in production, the security team needs a complete picture of any known vulnerabilities — the organisation requires all third-party dependencies to be formally cleared before shipping.
+A game development team is evaluating `squirrel` version `3.0` as a scripting engine dependency in their C++ engine. Before embedding it in production, the security team needs a complete picture of any known vulnerabilities — the organisation requires all third-party dependencies to be formally cleared before shipping.
 
-Your job is to look up all known security advisories for `libheif` version `1.21.2` and write up your findings so the team can make an informed decision.
+Your job is to look up all known security advisories for `squirrel` version `3.0` and write up your findings so the team can make an informed decision.
 
 ## Output Specification
 
