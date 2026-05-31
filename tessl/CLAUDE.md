@@ -56,6 +56,8 @@ tessl scenario generate ./tessl/security-audit --count 10
 tessl scenario download <id> --output ./tessl/security-audit/evals/
 
 # Run all scenarios via tessl cloud (both baseline and with-context):
+# IMPORTANT: always pass the tile path — running bare `tessl eval run` creates a
+# Generic run with no skill context (only baseline scores, no "With context" column).
 tessl eval run ./tessl/security-audit --agent claude:claude-sonnet-4-6 --label "v1.0.0"
 tessl eval view --last
 
