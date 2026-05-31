@@ -79,7 +79,15 @@ npx @meterian/cli advisories get <language> <name> <version>
 For each vulnerable dependency:
 
 1. The `check` output already contains `safeVersions` — an array ordered `[latestPatch, latestMinor, latestMajor]` (nulls excluded). Select the first (least-disruptive) entry.
-2. Apply patch bumps automatically. For minor or major bumps, show the proposed change and ask for confirmation before applying.
+2. If you need safe-version data without running a full audit, use the standalone command:
+
+```bash
+npx @meterian/cli advisories getnextsafe <language> <name> <version>
+```
+
+This returns `{"safe_versions": {"latestPatch": "<ver>|null", "latestMinor": "<ver>|null", "latestMajor": "<ver>|null"}}`. A `null` entry means no safe version exists at that tier. Select the first non-null field in order (latestPatch → latestMinor → latestMajor) as the least-disruptive upgrade.
+
+3. Apply patch bumps automatically. For minor or major bumps, show the proposed change and ask for confirmation before applying.
 
 Update the version in the manifest file and/or run the ecosystem's install command (e.g. `npm install lodash@4.17.21`, `cargo update -p <crate>`, `pip install <pkg>==<ver>`).
 

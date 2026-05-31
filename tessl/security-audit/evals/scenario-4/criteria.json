@@ -1,0 +1,31 @@
+{
+  "context": "Tests safe-version lookup for urllib3 2.0.0 (Python). Meterian returns: latestPatch=null, latestMinor=2.7.0, latestMajor=null. The key insight is that there is NO patch-level fix — the minimum safe upgrade is a minor bump to 2.7.0. A baseline agent likely finds '2.7.0' via web search but is unlikely to explicitly state that no patch-level fix exists within the 2.0.x series.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Safe minor version correct",
+      "description": "The report identifies 2.7.0 as the minimum safe minor upgrade for urllib3 2.0.0",
+      "max_score": 30
+    },
+    {
+      "name": "No patch fix stated",
+      "description": "The report explicitly states there is no patch-level fix available within the 2.0.x series (latestPatch is null / no 2.0.x fix exists)",
+      "max_score": 30
+    },
+    {
+      "name": "Upgrade tier breakdown",
+      "description": "The report distinguishes between patch, minor, and major upgrade tiers and gives a recommendation for each",
+      "max_score": 20
+    },
+    {
+      "name": "Raw safe version data file",
+      "description": "A file named nextsafe-raw.json exists containing safe version data for urllib3",
+      "max_score": 10
+    },
+    {
+      "name": "Meterian format: safe_versions",
+      "description": "nextsafe-raw.json contains a safe_versions object with latestPatch, latestMinor, latestMajor fields, confirming the Meterian CLI was used",
+      "max_score": 10
+    }
+  ]
+}
