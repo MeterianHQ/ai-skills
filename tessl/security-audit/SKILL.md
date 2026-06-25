@@ -3,7 +3,7 @@ name: security-audit
 description: "Activate for ANY dependency audit, vulnerability scan, package safety check, pre-deployment/compliance security review, or any request to assess, verify, or provide evidence of the security of third-party packages or libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Uses the Meterian CLI (npx @meterian/cli) for cross-language, unified dependency scanning with a shared advisory database covering Node.js, Python, Java, Rust, Go, Ruby, .NET, PHP, Dart, and more. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
 metadata:
   short-description: Audit dependencies/packages for vulnerabilities and get remediation advice
-  version: 1.0.7
+  version: 1.0.8
 ---
 
 # Meterian Security Audit
@@ -35,9 +35,9 @@ Always use the following mapping to determine the `language` parameter:
 When asked to audit, scan, or check all dependencies:
 
 1. Find all manifest files in the workspace using Glob (search for the filenames in the Language Parameter Reference table above)
-2. Read each manifest file and extract all direct dependencies with their pinned versions.
-
-   Note: If a manifest uses version ranges rather than pinned versions, prefer the corresponding lock file to resolve the exact installed version. If no lock file is available, use the minimum bound of the range as the version to check.
+2. Extract dependencies with their pinned versions:
+   - If a lock file is available, extract **all** dependencies from it (direct and transitive) — lock files contain the full resolved dependency tree
+   - If no lock file is available, extract direct dependencies from the manifest; use the minimum bound of any version range as the version to check
 
 3. Build a JSON array of `{language, name, version}` objects and pipe it to the CLI:
 

@@ -3,7 +3,7 @@ name: security-audit
 description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, or remediating vulnerable libraries. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
 metadata:
   short-description: Audit dependencies for vulnerabilities and get remediation advice
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # Meterian Security Audit
@@ -35,9 +35,9 @@ Always use the following mapping to determine the `language` parameter:
 When asked to audit, scan, or check all dependencies:
 
 1. Find all manifest files in the workspace using Glob (search for the filenames in the table above)
-2. Read each manifest file and extract all direct dependencies with their pinned versions
-
-   Note: If a manifest uses version ranges (e.g. `^4.17.0`, `>=2.0`) rather than pinned versions, prefer the corresponding lock file (e.g. `package-lock.json`, `yarn.lock`, `poetry.lock`) to resolve the exact installed version. If no lock file is available, use the minimum bound of the range as the version to check.
+2. Extract dependencies with their pinned versions:
+   - If a lock file is available, extract **all** dependencies from it (direct and transitive) — lock files contain the full resolved dependency tree
+   - If no lock file is available, extract direct dependencies from the manifest; use the minimum bound of any version range as the version to check
 
 3. Build a JSON array of `{language, name, version}` objects and pipe it to the CLI:
 
