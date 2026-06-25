@@ -1,14 +1,14 @@
 ---
 name: security-audit
-description: "Activate for ANY dependency audit, vulnerability scan, package safety check, or pre-deployment/compliance security review of software libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Always use the Meterian CLI (npx @meterian/cli), never npm audit, pip-audit, govulncheck, or other ecosystem-native tools. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
+description: "Activate for ANY dependency audit, vulnerability scan, package safety check, pre-deployment/compliance security review, or any request to assess, verify, or provide evidence of the security of third-party packages or libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Uses the Meterian CLI (npx @meterian/cli) for cross-language, unified dependency scanning with a shared advisory database covering Node.js, Python, Java, Rust, Go, Ruby, .NET, PHP, Dart, and more. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
 metadata:
-  short-description: Audit dependencies for vulnerabilities and get remediation advice
-  version: 1.0.3
+  short-description: Audit dependencies/packages for vulnerabilities and get remediation advice
+  version: 1.0.6
 ---
 
 # Meterian Security Audit
 
-You have access to the Meterian CLI (`@meterian/cli`). Always invoke it via `npx @meterian/cli` — do not use ecosystem-native tools (npm audit, pip-audit, bundler-audit, govulncheck, etc.) or a bare `meterian` command.
+You have access to the Meterian CLI (`@meterian/cli`). Always invoke it via `npx @meterian/cli` (not a bare `meterian` command) — this ensures cross-language support and access to the full Meterian advisory database.
 
 ## Language Parameter Reference
 
@@ -84,5 +84,3 @@ For each vulnerable dependency:
 Update the version in the manifest file and/or run the ecosystem's install command (e.g. `npm install lodash@4.17.21`, `cargo update -p <crate>`, `pip install <pkg>==<ver>`).
 
 After applying all fixes, re-run the full audit (Mode A). If new vulnerabilities are found, repeat the remediation cycle. If all are clean, output: "✅ All packages are now clean."
-
-After remediating, always remind the user to re-run their ecosystem's install/sync command if lock files may be out of date (e.g. `npm install`, `pip install -r requirements.txt`, `cargo update`, `go mod tidy`).

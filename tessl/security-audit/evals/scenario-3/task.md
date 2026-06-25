@@ -2,7 +2,7 @@
 
 ## Problem/Feature Description
 
-A platform team manages a full-stack application with three independently developed components, all stored in the `inputs/` directory: a React frontend dashboard (`package.json`), a Rust analytics engine (`Cargo.toml`), and a Python ML pipeline (`requirements.txt`). Before the quarterly release, the CISO has mandated a dependency security audit across all three components in a single report.
+A platform team manages a full-stack application with three independently developed components, all stored in the `inputs/` directory: a React frontend dashboard (`package.json`), a Rust analytics engine (`Cargo.toml`), and a Python ML pipeline (`requirements.txt`). Before the quarterly release, the CISO has mandated a security audit of third-party dependencies across all three components in a single report.
 
 The team currently has no automated scanning in place, so this will be the first comprehensive security check for the entire stack. The goal is to produce one unified vulnerability report covering every component.
 
