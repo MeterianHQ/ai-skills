@@ -3,7 +3,7 @@ name: security-audit
 description: "Activate for ANY dependency audit, vulnerability scan, package safety check, pre-deployment/compliance security review, or any request to assess, verify, or provide evidence of the security of third-party packages or libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Uses the Meterian CLI (npx @meterian/cli) for cross-language, unified dependency scanning with a shared advisory database covering Node.js, Python, Java, Rust, Go, Ruby, .NET, PHP, Dart, and more. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
 metadata:
   short-description: Audit dependencies/packages for vulnerabilities and get remediation advice
-  version: 1.0.6
+  version: 1.0.7
 ---
 
 # Meterian Security Audit
@@ -35,7 +35,9 @@ Always use the following mapping to determine the `language` parameter:
 When asked to audit, scan, or check all dependencies:
 
 1. Find all manifest files in the workspace using Glob (search for the filenames in the Language Parameter Reference table above)
-2. Read each manifest file and extract all direct dependencies with their pinned versions. Prefer lock files over manifests with version ranges; if no lock file exists, use the minimum bound of the range.
+2. Read each manifest file and extract all direct dependencies with their pinned versions.
+
+   Note: If a manifest uses version ranges rather than pinned versions, prefer the corresponding lock file to resolve the exact installed version. If no lock file is available, use the minimum bound of the range as the version to check.
 
 3. Build a JSON array of `{language, name, version}` objects and pipe it to the CLI:
 
@@ -58,7 +60,13 @@ echo '<json-array>' | npx @meterian/cli check
 
 If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N packages."
 
-5. If vulnerabilities are present, always include in the report or response: a note that reachability analysis is available to determine which vulnerabilities are actually exploitable, and an offer to run it. If yes, invoke `reachability-analysis` with vulnerable packages (name, version, CVE ID). Always offer remediation guidance (Mode C).
+5. If vulnerabilities were found:
+   - Offer remediation (see Mode C below)
+   - Ask if the user would like to run a reachability analysis to determine which vulnerabilities are actually exploitable in their codebase.
+     - If yes → invoke the `reachability-analysis` skill, including the list of vulnerable packages (name, version, CVE ID) in the invocation prompt
+     - If no → end the audit flow
+
+   If no vulnerabilities were found, the audit is complete — do not propose reachability analysis.
 
 ## Mode B — Ad-hoc Security Query
 
@@ -79,7 +87,9 @@ npx @meterian/cli advisories get <language> <name> <version>
 For each vulnerable dependency:
 
 1. The `check` output already contains `safeVersions` — an array ordered `[latestPatch, latestMinor, latestMajor]` (nulls excluded). Select the first (least-disruptive) entry.
-2. Apply patch bumps automatically. For minor or major bumps, show the proposed change and ask for confirmation before applying.
+2. Determine the bump level:
+   - **Patch**: apply automatically
+   - **Minor** or **Major**: show the proposed change and ask for confirmation before applying
 
 Update the version in the manifest file and/or run the ecosystem's install command (e.g. `npm install lodash@4.17.21`, `cargo update -p <crate>`, `pip install <pkg>==<ver>`).
 

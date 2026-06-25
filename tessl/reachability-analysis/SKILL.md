@@ -1,9 +1,9 @@
 ---
 name: reachability-analysis
-description: Use after a security audit to determine which vulnerable dependencies are actually reachable and exploitable in the application source code. Traces import paths, call graphs, and entry points to classify each vulnerability as Reachable, Conditionally reachable, Loaded but not called, Present but not reachable, or Unknown — helping prioritise which vulnerabilities to fix first. Activates when the user asks "which vulnerabilities are reachable?", "check if this is exploitable", or answers yes to the post-audit reachability offer.
+description: Use after a security audit to determine which vulnerable dependencies are actually reachable and exploitable in the application source code. Activates when the user asks "which vulnerabilities are reachable?", "check if this is exploitable", or answers yes to the post-audit reachability offer.
 metadata:
   short-description: Classify vulnerable dependencies by reachability — reachable, conditionally reachable, loaded but not called, present but not reachable, or unknown
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # Meterian Reachability Analysis
@@ -35,7 +35,24 @@ For safe version recommendations, use the `safeVersions` array from the audit ou
 
 ### Step 2: Identify application entry points
 
-Search for execution entry points: HTTP routes, API controllers, GraphQL resolvers, RPC/CLI/serverless handlers, background jobs, queue consumers, scheduled tasks, startup hooks, plugin loaders, file upload handlers, parsers, deserializers, template renderers, and auth/crypto/archive/document processing code.
+Search for execution entry points, including:
+
+- HTTP routes
+- API controllers
+- GraphQL resolvers
+- RPC handlers
+- CLI commands
+- serverless handlers
+- background jobs
+- queue consumers
+- scheduled tasks
+- startup hooks
+- plugin loaders
+- file upload handlers
+- parsers
+- deserializers
+- template rendering paths
+- auth, crypto, archive, XML, YAML, JSON, PDF, image, and document processing code
 
 ### Step 3: Search for package usage
 

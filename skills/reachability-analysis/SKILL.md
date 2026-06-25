@@ -3,6 +3,7 @@ name: reachability-analysis
 description: Use after a security audit to determine which vulnerable dependencies are actually reachable and exploitable in the application source code. Activates when the user asks "which vulnerabilities are reachable?", "check if this is exploitable", or answers yes to the post-audit reachability offer.
 metadata:
   short-description: Classify vulnerable dependencies by reachability — reachable, conditionally reachable, loaded but not called, present but not reachable, or unknown
+  version: 1.0.0
 ---
 
 # Meterian Reachability Analysis

@@ -3,6 +3,7 @@ name: security-audit
 description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, or remediating vulnerable libraries. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
 metadata:
   short-description: Audit dependencies for vulnerabilities and get remediation advice
+  version: 1.0.0
 ---
 
 # Meterian Security Audit
