@@ -3,7 +3,7 @@ name: security-audit
 description: "Activate for ANY dependency audit, vulnerability scan, package safety check, pre-deployment/compliance security review, or any request to assess, verify, or provide evidence of the security of third-party packages or libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Uses the Meterian CLI (npx @meterian/cli) for cross-language, unified dependency scanning with a shared advisory database covering Node.js, Python, Java, Rust, Go, Ruby, .NET, PHP, Dart, and more. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
 metadata:
   short-description: Audit dependencies/packages for vulnerabilities and get remediation advice
-  version: 1.0.8
+  version: 1.0.12
 ---
 
 # Meterian Security Audit
@@ -45,7 +45,7 @@ When asked to audit, scan, or check all dependencies:
 echo '<json-array>' | npx @meterian/cli check
 ```
 
-4. The CLI returns a compact JSON report. Present it as a markdown table:
+4. The CLI returns a compact JSON report. Present results in **one single table** — one row per vulnerability — using exactly these five column headers: `Package`, `Version`, `Severity`, `ID`, `Safe Versions`. Do not split information across multiple tables. Include a summary line in exactly this format: `X vulnerabilities found across Y packages (Z clean).`
 
 ```
 ## Meterian Security Audit Report
@@ -55,12 +55,12 @@ echo '<json-array>' | npx @meterian/cli check
 | lodash  | 4.17.15 | HIGH     | CVE-2021-23337 | 4.17.21 |
 ...
 
-**Summary:** X vulnerabilities found across Y packages (Z clean).
+X vulnerabilities found across Y packages (Z clean).
 ```
 
 If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N packages."
 
-5. If vulnerabilities were found:
+5. After presenting the report, if vulnerabilities were found:
    - Offer remediation (see Mode C below)
    - Ask if the user would like to run a reachability analysis to determine which vulnerabilities are actually exploitable in their codebase.
      - If yes → invoke the `reachability-analysis` skill, including the list of vulnerable packages (name, version, CVE ID) in the invocation prompt
