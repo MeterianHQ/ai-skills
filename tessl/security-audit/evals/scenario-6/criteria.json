@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent maps the Ruby manifest to the ruby language parameter, prefers Gemfile.lock pinned versions over Gemfile ranges, and invokes the Meterian CLI. CLI invocation verified via scan-raw.json Meterian format.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "ruby language",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"ruby\"` — confirming the correct language parameter (not `gem`, `rubygems`, or `rails`)",
+      "max_score": 20
+    },
+    {
+      "name": "Gemfile.lock preferred",
+      "description": "Extracts dependency versions from `Gemfile.lock` rather than the version ranges in `Gemfile`",
+      "max_score": 25
+    },
+    {
+      "name": "Pinned versions used",
+      "description": "The versions in `scan-raw.json` match the pinned versions in Gemfile.lock (e.g. rails 5.2.3, nokogiri 1.9.1) rather than Gemfile ranges",
+      "max_score": 20
+    },
+    {
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with audit result columns (Package, Version, Severity, ID, Safe Version(s))",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with vulnerability and package counts",
+      "max_score": 10
+    }
+  ]
+}

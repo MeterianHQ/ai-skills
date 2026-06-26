@@ -1,0 +1,12 @@
+{
+  "name": "meterian/ai-skills",
+  "mode": "vendored",
+  "dependencies": {
+    "meterian/security-audit": {
+      "source": "file:./meterian-security-audit-1.0.0.tgz"
+    },
+    "local/reachability-analysis": {
+      "source": "file:./local-reachability-analysis-0.1.0.tgz"
+    }
+  }
+}

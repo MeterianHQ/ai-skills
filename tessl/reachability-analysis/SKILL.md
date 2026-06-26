@@ -3,7 +3,7 @@ name: reachability-analysis
 description: Use after a security audit to determine which vulnerable dependencies are actually reachable and exploitable in the application source code. Activates when the user asks "which vulnerabilities are reachable?", "check if this is exploitable", or answers yes to the post-audit reachability offer.
 metadata:
   short-description: Classify vulnerable dependencies by reachability — reachable, conditionally reachable, loaded but not called, present but not reachable, or unknown
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # Meterian Reachability Analysis
@@ -31,11 +31,7 @@ Use the advisory output to identify the vulnerable behavior, symbol, function, c
 
 If `advisories get` does not identify specific functions or symbols, supplement with a web search: `<CVE-ID> <package-name> affected function`. If the advisory ID is not a CVE (e.g. a GHSA or internal ID), use: `<package-name> <version> security vulnerability affected function`.
 
-For safe version recommendations, use the `safeVersions` array from the audit output. Prefer in order:
-1. `latestPatch`
-2. `latestMinor`
-3. `latestMajor`
-4. If no safe version exists, recommend mitigation or replacement.
+For safe version recommendations, use the `safeVersions` array from the audit output (prefer least-disruptive). If no safe version exists, recommend mitigation or replacement.
 
 ### Step 2: Identify application entry points
 
@@ -73,22 +69,7 @@ For each vulnerable dependency, search for:
 - transitive use through direct dependencies
 - vulnerable symbol names, function names, or class names
 
-**Language-specific import patterns** (replace `NAME` with the package name):
-
-| Language | Search patterns |
-|----------|----------------|
-| nodejs | `require('NAME')`, `require("NAME")`, `from 'NAME'`, `from "NAME"`, `import NAME` |
-| python | `import NAME`, `from NAME import` |
-| java | `import NAME.`, `import com.NAME` |
-| rust | `use NAME::`, `extern crate NAME` |
-| php | `use NAME\`, `require 'NAME'`, `require "NAME"` |
-| ruby | `require 'NAME'`, `require "NAME"` |
-| golang | `"NAME"` (inside an import block) ¹ |
-| dotnet | `using NAME;` |
-
-¹ golang: string matching inside import blocks may produce false positives — verify matches manually.
-
-Exclude these directories from all searches: `node_modules`, `.git`, `dist`, `build`, `vendor`, `.venv`, `target`.
+Use the language-specific import patterns in [SEARCH_PATTERNS.md](SEARCH_PATTERNS.md) (includes exclusion directories).
 
 ### Step 4: Trace reachability
 
@@ -192,11 +173,7 @@ After all findings, produce a summary table:
 | moment  | 2.18.0  | CVE-2022-24785 | Present but not reachable | Low      | 2.29.4  |
 ```
 
-If any finding is Reachable or Conditionally reachable, ask:
-
-> "Would you like me to proceed with remediation for the reachable vulnerabilities?"
-
-If yes, invoke the `security-audit` skill (Mode C) for those packages only.
+If any finding is Reachable or Conditionally reachable, ask if the user wants to proceed with remediation. If yes → invoke the `security-audit` skill (Mode C) for those packages only.
 
 ## Rules
 

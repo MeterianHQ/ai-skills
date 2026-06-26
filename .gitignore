@@ -1,1 +1,12 @@
 .superpowers/
+.tessl/
+*.tgz
+site/
+.claude/
+tessl/eval-logs/
+tessl/security-audit-subset/
+.agents/skills/
+.codex/skills/
+.cursor/skills/
+.github/skills/
+.vscode/skills/

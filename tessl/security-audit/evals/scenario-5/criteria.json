@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent correctly maps a go.mod file to the golang language parameter and invokes the Meterian CLI. CLI invocation is verified via Meterian-specific JSON format in scan-raw.json (vulnerable/summary structure, safeVersions field) rather than unverifiable command strings.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "golang language",
+      "description": "Sets language to `golang` for Go module packages (not `go`, `gomod`, or `modules`) — inferred from correct package data appearing in scan-raw.json or the report",
+      "max_score": 20
+    },
+    {
+      "name": "go.mod extraction",
+      "description": "Extracts dependency names and pinned versions from go.mod (e.g. github.com/gin-gonic/gin at v1.7.2)",
+      "max_score": 20
+    },
+    {
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
+      "max_score": 20
+    },
+    {
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by govulncheck, OSV, or web search",
+      "max_score": 20
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with columns for Package, Version, Severity, ID, and Safe Version(s)",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with vulnerability count and total packages checked",
+      "max_score": 10
+    }
+  ]
+}

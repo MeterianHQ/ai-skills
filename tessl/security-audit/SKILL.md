@@ -1,14 +1,14 @@
 ---
 name: security-audit
-description: Use when auditing project dependencies for vulnerabilities, answering "is [library] [version] safe?" questions, or remediating vulnerable libraries. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock).
+description: "Activate for ANY dependency audit, vulnerability scan, package safety check, pre-deployment/compliance security review, or any request to assess, verify, or provide evidence of the security of third-party packages or libraries — including 'is [library] [version] safe?' queries and remediation of insecure packages. Uses the Meterian CLI (npx @meterian/cli) for cross-language, unified dependency scanning with a shared advisory database covering Node.js, Python, Java, Rust, Go, Ruby, .NET, PHP, Dart, and more. Also activates automatically when the user opens or modifies a manifest file (package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, pom.xml, Cargo.toml, go.mod, Gemfile, composer.json, build.gradle, *.csproj, pubspec.yaml, conanfile.txt, conanfile.py, project.clj, deps.edn, Package.swift, pubspec.lock, Package.resolved, Gemfile.lock, poetry.lock, uv.lock, Cargo.lock, composer.lock)."
 metadata:
-  short-description: Audit dependencies for vulnerabilities and get remediation advice
-  version: 1.0.2
+  short-description: Audit dependencies/packages for vulnerabilities and get remediation advice
+  version: 1.0.12
 ---
 
 # Meterian Security Audit
 
-You have access to the Meterian CLI (`@meterian/cli`). Invoke it via `npx @meterian/cli` (zero-install) or `meterian` if globally installed.
+You have access to the Meterian CLI (`@meterian/cli`). Always invoke it via `npx @meterian/cli` (not a bare `meterian` command) — this ensures cross-language support and access to the full Meterian advisory database.
 
 ## Language Parameter Reference
 
@@ -34,7 +34,7 @@ Always use the following mapping to determine the `language` parameter:
 
 When asked to audit, scan, or check all dependencies:
 
-1. Find all manifest files in the workspace using Glob (search for the filenames in the table above)
+1. Find all manifest files in the workspace using Glob (search for the filenames in the Language Parameter Reference table above)
 2. Extract dependencies with their pinned versions:
    - If a lock file is available, extract **all** dependencies from it (direct and transitive) — lock files contain the full resolved dependency tree
    - If no lock file is available, extract direct dependencies from the manifest; use the minimum bound of any version range as the version to check
@@ -62,8 +62,7 @@ If `vulnerable` is empty, output: "✅ No vulnerabilities detected across N pack
 
 5. After presenting the report, if vulnerabilities were found:
    - Offer remediation (see Mode C below)
-   - Before applying any fixes, ask:
-     > "Would you like me to also run a reachability analysis to determine which of these vulnerabilities are actually exploitable in your codebase?"
+   - Ask if the user would like to run a reachability analysis to determine which vulnerabilities are actually exploitable in their codebase.
      - If yes → invoke the `reachability-analysis` skill, including the list of vulnerable packages (name, version, CVE ID) in the invocation prompt
      - If no → end the audit flow
 
@@ -88,27 +87,10 @@ npx @meterian/cli advisories get <language> <name> <version>
 For each vulnerable dependency:
 
 1. The `check` output already contains `safeVersions` — an array ordered `[latestPatch, latestMinor, latestMajor]` (nulls excluded). Select the first (least-disruptive) entry.
-2. Determine the bump level from the selected version:
-   - **Patch** (x.y.Z → x.y.Z'): apply automatically
-   - **Minor** (x.Y.z → x.Y'.z) or **Major** (X.y.z → X'.y.z): show the proposed change and ask for confirmation before applying
+2. Determine the bump level:
+   - **Patch**: apply automatically
+   - **Minor** or **Major**: show the proposed change and ask for confirmation before applying
 
-Use the best remediation approach for the ecosystem — this may mean editing the manifest file directly, running a package manager command (e.g. `npm install lodash@4.17.21`), or both.
+Update the version in the manifest file and/or run the ecosystem's install command (e.g. `npm install lodash@4.17.21`, `cargo update -p <crate>`, `pip install <pkg>==<ver>`).
 
 After applying all fixes, re-run the full audit (Mode A). If new vulnerabilities are found, repeat the remediation cycle. If all are clean, output: "✅ All packages are now clean."
-
-After remediating, always remind the user to re-run their package manager if lock files may be out of date:
-- npm: `npm install`
-- yarn: `yarn install`
-- pnpm: `pnpm install`
-- pip: `pip install -r requirements.txt`
-- cargo: `cargo update`
-- go: `go mod tidy`
-- maven: `mvn install`
-- gradle: `gradle build`
-- composer: `composer install`
-- bundler: `bundle install`
-- dotnet: `dotnet restore`
-- conan: `conan install .`
-- pub/flutter: `flutter pub get` or `dart pub get`
-- leiningen: `lein deps`
-- swift: `swift package resolve`

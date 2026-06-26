@@ -1,0 +1,1 @@
+{ "description": "Node.js full audit with table report", "include": ["./inputs"] }

@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent correctly maps pom.xml to the java language parameter, extracts Maven dependency coordinates, and invokes the Meterian CLI. CLI invocation verified via Meterian-specific format in scan-raw.json (vulnerable/summary structure, safeVersions field).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "java language",
+      "description": "`scan-raw.json` contains entries with `\"language\":\"java\"` — confirming the correct language parameter (not `maven`, `jvm`, or `spring`)",
+      "max_score": 22
+    },
+    {
+      "name": "pom.xml extraction",
+      "description": "Extracts dependency names and versions from pom.xml — confirmed by entries in `scan-raw.json` (e.g. jackson-databind 2.11.0, log4j 1.2.17)",
+      "max_score": 20
+    },
+    {
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
+      "max_score": 18
+    },
+    {
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by Maven plugins or web search",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with the required columns: Package, Version, Severity, ID, Safe Version(s)",
+      "max_score": 15
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line with total vulnerability count and number of clean packages",
+      "max_score": 10
+    }
+  ]
+}

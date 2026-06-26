@@ -1,0 +1,41 @@
+{
+  "context": "Tests whether the agent correctly identifies that poetry.lock should take precedence over requirements.txt for version extraction, maps the manifest to the python language, and invokes the Meterian CLI. CLI invocation verified via Meterian-specific format in scan-raw.json rather than unverifiable command strings.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "python language",
+      "description": "Entries in `scan-raw.json` carry `\"language\":\"python\"` — confirming the correct language parameter was used (not `py`, `pip`, or `python3`)",
+      "max_score": 15
+    },
+    {
+      "name": "Lock file preferred",
+      "description": "Extracts dependency versions from `poetry.lock` rather than the version ranges in `requirements.txt`",
+      "max_score": 18
+    },
+    {
+      "name": "Pinned versions used",
+      "description": "The versions in `scan-raw.json` match the pinned versions in poetry.lock (e.g. django 2.2.4, requests 2.22.0) — not the lower-bound ranges from requirements.txt (e.g. django 2.0)",
+      "max_score": 17
+    },
+    {
+      "name": "Raw scan data file",
+      "description": "A file named `scan-raw.json` exists containing a JSON object with a `vulnerable` array — the Meterian CLI check output format",
+      "max_score": 15
+    },
+    {
+      "name": "Meterian format: safeVersions",
+      "description": "Entries in the `vulnerable` array of `scan-raw.json` contain a `safeVersions` field — a distinctive Meterian-only field not produced by pip-audit or web search",
+      "max_score": 15
+    },
+    {
+      "name": "Markdown table",
+      "description": "Report contains a markdown table with audit results and all five required column headers: Package, Version, Severity, ID, and Safe Version(s) — singular or plural accepted",
+      "max_score": 10
+    },
+    {
+      "name": "Summary line",
+      "description": "Report includes a summary line referencing total vulnerabilities found and count of clean packages",
+      "max_score": 10
+    }
+  ]
+}

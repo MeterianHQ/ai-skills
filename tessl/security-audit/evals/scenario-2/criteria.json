@@ -1,0 +1,31 @@
+{
+  "context": "Tests authentic advisory coverage for squirrel 3.0 (C++/Conan). Meterian returns 6 advisories: CVE-2026-9541, CVE-2026-3388, CVE-2026-3389, CVE-2026-2661, CVE-2026-2659 (2026 CVEs, likely not findable via web search) and CVE-2021-41556 (CRITICAL, publicly known). Primary scoring on completeness — how many of the 6 advisories the agent finds.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "All 6 advisories found",
+      "description": "The report or advisory-raw.json contains all six CVE identifiers: CVE-2026-9541, CVE-2026-3388, CVE-2026-3389, CVE-2026-2661, CVE-2026-2659, CVE-2021-41556",
+      "max_score": 40
+    },
+    {
+      "name": "Severity correct",
+      "description": "CVE-2021-41556 is CRITICAL, CVE-2026-2661 and CVE-2026-2659 are HIGH, CVE-2026-9541, CVE-2026-3388 and CVE-2026-3389 are MEDIUM",
+      "max_score": 25
+    },
+    {
+      "name": "Descriptions present",
+      "description": "Each of the six advisories includes a meaningful description of the vulnerability",
+      "max_score": 15
+    },
+    {
+      "name": "Raw advisory data file",
+      "description": "A file named `advisory-raw.json` exists containing advisory data for squirrel",
+      "max_score": 10
+    },
+    {
+      "name": "Meterian format: versionRange",
+      "description": "The advisory objects in `advisory-raw.json` contain a `versionRange` field using mathematical interval notation confirming the Meterian CLI was used",
+      "max_score": 10
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{ "description": "Ruby gems audit with Gemfile.lock preference", "include": ["./inputs"] }
