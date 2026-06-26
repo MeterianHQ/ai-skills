@@ -11,8 +11,8 @@ When you ask "audit my dependencies", "scan this project", or simply open a
 manifest file, the skill:
 
 1. Finds all manifest files in the workspace
-2. Reads each file and resolves exact installed versions (using lock files where
-   available)
+2. Resolves exact installed versions, from lock files when available (including
+   transitive dependencies), or from manifest version ranges otherwise
 3. Sends all dependencies to the Meterian CLI in one batch call
 4. Presents results as a table with severity, CVE ID, and safe versions
 
@@ -23,7 +23,7 @@ manifest file, the skill:
 |---------|---------|----------|----------------|---------------|
 | lodash  | 4.17.15 | HIGH     | CVE-2021-23337 | 4.17.21       |
 
-Summary: 1 vulnerability found across 42 packages (41 clean).
+1 vulnerability found across 42 packages (41 clean).
 ```
 
 If no vulnerabilities are found: `✅ No vulnerabilities detected across N packages.`
