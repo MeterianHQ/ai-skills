@@ -1,0 +1,3331 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Security scanning for every developer workflow — CLI, AI Skills, and MCP Server.">
+      
+      
+        <meta name="author" content="Meterian">
+      
+      
+        <link rel="canonical" href="https://meterianhq.github.io/ai-skills/superpowers/plans/2026-05-25-meterian-ai-website/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Meterian AI Website — Implementation Plan - Meterian Security - AI Skills and Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meterian-ai-website-implementation-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Meterian Security - AI Skills and Tools" class="md-header__button md-logo" aria-label="Meterian Security - AI Skills and Tools" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meterian Security - AI Skills and Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meterian AI Website — Implementation Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MeterianHQ/ai-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MeterianHQ/ai-skills
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../skills/" class="md-tabs__link">
+          
+  
+  
+  AI Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mcp/" class="md-tabs__link">
+          
+  
+  
+  MCP Server
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cli/" class="md-tabs__link">
+          
+  
+  
+  CLI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Meterian Security - AI Skills and Tools" class="md-nav__button md-logo" aria-label="Meterian Security - AI Skills and Tools" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Meterian Security - AI Skills and Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MeterianHQ/ai-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MeterianHQ/ai-skills
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/security-audit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/reachability-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reachability Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Installation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/claude-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/cursor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/windsurf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windsurf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/cline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/aider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/continue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continue.dev
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gemini CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/installation/codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supported Clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/config-file-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config-File Clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts & Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/languages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supported Languages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-foundation-mkdocsyml-requirements-github-actions-custom-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 1: Foundation — mkdocs.yml, requirements, GitHub Actions, custom CSS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-homepage-docsindexmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 2: Homepage (docs/index.md)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-getting-started-docsgetting-startedmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 3: Getting Started (docs/getting-started.md)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-cli-section-3-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 4: CLI section (3 pages)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advisories-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        advisories get
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nextsafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextsafe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-6-ai-skills-installation-overview-claude-code-cursor-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 6: AI Skills installation — Overview + Claude Code + Cursor + Copilot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-7-ai-skills-installation-windsurf-cline-aider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 7: AI Skills installation — Windsurf + Cline + Aider
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-8-ai-skills-installation-continuedev-gemini-cli-codex-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 8: AI Skills installation — Continue.dev + Gemini CLI + Codex CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-9-mcp-server-overview-tools-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 9: MCP Server — Overview + Tools Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-10-mcp-server-installation-supported-clients-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 10: MCP Server — Installation + Supported Clients + Prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VS Code users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-11-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 11: FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-12-enable-github-pages-and-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 12: Enable GitHub Pages and deploy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-review
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meterian-ai-website-implementation-plan">Meterian AI Website — Implementation Plan<a class="headerlink" href="#meterian-ai-website-implementation-plan" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (<code>- [ ]</code>) syntax for tracking.</p>
+</blockquote>
+<p><strong>Goal:</strong> Build and deploy a MkDocs documentation website at <code>https://meterianhq.github.io/ai-skills/</code> covering three products: CLI, AI Skills, and MCP Server.</p>
+<p><strong>Architecture:</strong> MkDocs with Material for MkDocs theme, matching the VS Code extension site's indigo colour scheme and Roboto font stack. All content lives in <code>docs/</code>. Deployed via GitHub Actions on every push to <code>main</code>. A custom CSS file adds the homepage hero styling.</p>
+<p><strong>Tech Stack:</strong> MkDocs ≥1.5, Material for MkDocs ≥9.5, GitHub Actions, GitHub Pages (<code>gh-pages</code> branch)</p>
+<hr />
+<h2 id="file-structure">File structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mkdocs.yml                             # site config + nav
+requirements-docs.txt                  # pip deps for CI
+.github/workflows/docs.yml             # build + deploy
+docs/
+  index.md                             # homepage
+  getting-started.md
+  stylesheets/
+    extra.css                          # hero + eco-tag styles
+  cli/
+    index.md
+    commands.md
+    languages.md
+  skills/
+    index.md
+    security-audit.md
+    reachability-analysis.md
+    installation/
+      index.md
+      claude-code.md
+      cursor.md
+      copilot.md
+      windsurf.md
+      cline.md
+      aider.md
+      continue.md
+      gemini.md
+      codex.md
+  mcp/
+    index.md
+    tools.md
+    installation.md
+    clients.md
+    prompts.md
+  faq.md
+</code></pre></div>
+<hr />
+<h2 id="task-1-foundation-mkdocsyml-requirements-github-actions-custom-css">Task 1: Foundation — mkdocs.yml, requirements, GitHub Actions, custom CSS<a class="headerlink" href="#task-1-foundation-mkdocsyml-requirements-github-actions-custom-css" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>mkdocs.yml</code>
+- Create: <code>requirements-docs.txt</code>
+- Create: <code>.github/workflows/docs.yml</code>
+- Create: <code>docs/stylesheets/extra.css</code>
+- Create: <code>docs/index.md</code> (stub — replaced in Task 2)</p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>requirements-docs.txt</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs-material&gt;=9.5
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 2: Create <code>mkdocs.yml</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meterian AI</span>
+<span class="nt">site_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://meterianhq.github.io/ai-skills/</span>
+<span class="nt">site_description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">  </span><span class="no">Security scanning for every developer workflow —</span>
+<span class="w">  </span><span class="no">CLI, AI Skills, and MCP Server.</span>
+<span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meterian</span>
+<span class="nt">repo_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/MeterianHQ/ai-skills</span>
+<span class="nt">repo_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MeterianHQ/ai-skills</span>
+<span class="nt">edit_uri</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="nt">theme</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-7</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switch to dark mode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+<span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-4</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switch to light mode</span>
+<span class="w">  </span><span class="nt">font</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Roboto</span>
+<span class="w">    </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Roboto Mono</span>
+<span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.tabs</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.top</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.highlight</span>
+
+<span class="nt">extra_css</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stylesheets/extra.css</span>
+
+<span class="nt">markdown_extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admonition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">md_in_html</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.tabbed</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">alternate_style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tables</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">toc</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">permalink</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Getting Started</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting-started.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">CLI</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cli/index.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Commands</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cli/commands.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Supported Languages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cli/languages.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AI Skills</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/index.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Security Audit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/security-audit.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Reachability Analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/reachability-analysis.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Installation</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/index.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Claude Code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/claude-code.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Cursor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/cursor.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">GitHub Copilot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/copilot.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Windsurf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/windsurf.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Cline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/cline.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Aider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/aider.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Continue.dev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/continue.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Gemini CLI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/gemini.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Codex CLI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skills/installation/codex.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">MCP Server</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp/index.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Tools Reference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp/tools.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Installation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp/installation.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Supported Clients</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp/clients.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Prompts &amp; Examples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp/prompts.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">FAQ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">faq.md</span>
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 3: Create <code>docs/stylesheets/extra.css</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c">/* ── Homepage hero ── */</span>
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f4f5fb</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#dde0f0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="kt">rem</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">.</span><span class="nc">eyebrow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-transform</span><span class="p">:</span><span class="w"> </span><span class="kc">uppercase</span><span class="p">;</span>
+<span class="w">  </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">0.09</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-primary-fg-color</span><span class="p">);</span>
+<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="kt">rem</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-default-fg-color</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-default-fg-color--light</span><span class="p">);</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero-badges</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero-badges</span><span class="w"> </span><span class="nt">code</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#c8cef5</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span><span class="kt">rem</span><span class="w"> </span><span class="mf">0.55</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.78</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-primary-fg-color</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/* ── Ecosystem tags ── */</span>
+<span class="p">.</span><span class="nc">eco-strip</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">eco-tag</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f2ff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#c8cef5</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span><span class="kt">rem</span><span class="w"> </span><span class="mf">0.55</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-primary-fg-color</span><span class="p">);</span>
+<span class="w">  </span><span class="k">white-space</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* dark mode adjustments */</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">16</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">25</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">hero-badges</span><span class="w"> </span><span class="nt">code</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">20</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">30</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">eco-tag</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">18</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="nb">hsla</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-hue</span><span class="p">),</span><span class="mi">15</span><span class="kt">%</span><span class="p">,</span><span class="mi">28</span><span class="kt">%</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 4: Create stub <code>docs/index.md</code> so the build can run</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># Meterian AI</span>
+
+Coming soon.
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 5: Create <code>.github/workflows/docs.yml</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy documentation</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements-docs.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span>
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 6: Install deps locally and verify stub builds</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-docs.txt
+mkdocs<span class="w"> </span>build<span class="w"> </span>--strict<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</code></pre></div>
+<p>Expected: <code>INFO - Documentation built in X.X seconds</code> (warnings about missing nav pages are OK at this stage — <code>--strict</code> will error on those, so first run without it).</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+</code></pre></div>
+<p>Expected: <code>INFO - Documentation built in X.X seconds</code></p>
+<ul>
+<li>[ ] <strong>Step 7: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>mkdocs.yml<span class="w"> </span>requirements-docs.txt<span class="w"> </span>.github/workflows/docs.yml<span class="w"> </span>docs/stylesheets/extra.css<span class="w"> </span>docs/index.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add MkDocs foundation — config, CI, custom CSS"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-2-homepage-docsindexmd">Task 2: Homepage (<code>docs/index.md</code>)<a class="headerlink" href="#task-2-homepage-docsindexmd" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Modify: <code>docs/index.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Write <code>docs/index.md</code></strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>&lt;div class="hero" markdown&gt;
+&lt;span class="eyebrow"&gt;Free &amp;nbsp;·&amp;nbsp; No account required&lt;/span&gt;
+
+<span class="gh"># Security scanning for every developer workflow</span>
+
+Audit open-source dependencies for known vulnerabilities — from the command line,
+through your AI coding assistant, or via the Model Context Protocol.
+Covers 12+ ecosystems.
+
+&lt;div class="hero-badges" markdown&gt;
+<span class="sb">`@meterian/cli`</span> &amp;nbsp;&amp;nbsp; <span class="sb">`@meterian/mcp`</span> &amp;nbsp;&amp;nbsp; <span class="sb">`9 AI tools supported`</span>
+&lt;/div&gt;
+&lt;/div&gt;
+
+<span class="gu">## Choose your integration</span>
+
+Three ways to add Meterian security to your workflow — pick the one that fits your setup.
+
+&lt;div class="grid cards" markdown&gt;
+
+<span class="k">-</span><span class="w"> </span>  ⚡ <span class="gs">**CLI**</span>
+
+    ---
+
+    Audit any project from the command line. Batch-check all dependencies, look
+    up individual packages, or find safe upgrade paths. Zero-install via npx — no
+    global setup required.
+
+<span class="sb">    ```bash</span>
+<span class="w">    </span>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>check
+<span class="sb">    ```</span>
+
+    [<span class="nt">:octicons-arrow-right-24: CLI documentation</span>](<span class="na">cli/index.md</span>)
+
+<span class="k">-</span><span class="w"> </span>  🧠 <span class="gs">**AI Skills**</span>
+
+    ---
+
+    Your AI coding assistant automatically scans dependencies and suggests fixes —
+    inline, as you work. Supports 9 tools including Claude Code, Cursor, and
+    GitHub Copilot. Triggers automatically when you open a manifest file.
+
+<span class="sb">    ```</span>
+<span class="sb">    meterian:security-audit</span>
+<span class="sb">    ```</span>
+
+    [<span class="nt">:octicons-arrow-right-24: AI Skills documentation</span>](<span class="na">skills/index.md</span>)
+
+<span class="k">-</span><span class="w"> </span>  🔌 <span class="gs">**MCP Server**</span>
+
+    ---
+
+    Expose real-time vulnerability data to any MCP-compatible client. Ask your
+    AI assistant about any library — it queries live advisory data, not a stale
+    training set.
+
+<span class="sb">    ```bash</span>
+<span class="w">    </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@meterian/mcp
+<span class="sb">    ```</span>
+
+    [<span class="nt">:octicons-arrow-right-24: MCP Server documentation</span>](<span class="na">mcp/index.md</span>)
+
+&lt;/div&gt;
+
+<span class="gu">## How they relate</span>
+
+The CLI is the engine underneath everything. AI Skills teach your coding assistant
+to invoke it directly. The MCP Server exposes the same vulnerability data as a
+live protocol endpoint — without requiring any CLI installation on the client side.
+</code></pre></div>
+Meterian Kiwi database
+        │
+        ▼
+  @meterian/cli  ──────────────────────────┐
+        │                                  │
+        ▼                                  ▼
+  AI Skills                          MCP Server
+  (npx @meterian/cli)            (JSON-RPC 2.0 / MCP)
+  9 coding assistants            Any MCP-compatible client
+<div class="highlight"><pre><span></span><code>## Supported ecosystems
+
+All three products cover the same 12+ languages and package managers.
+
+&lt;div class="eco-strip"&gt;
+&lt;span class="eco-tag"&gt;Node.js / npm&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Python / pip&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Java / Maven&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Java / Gradle&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Rust / Cargo&lt;/span&gt;
+&lt;span class="eco-tag"&gt;PHP / Composer&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Ruby / Bundler&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Go modules&lt;/span&gt;
+&lt;span class="eco-tag"&gt;.NET / NuGet&lt;/span&gt;
+&lt;span class="eco-tag"&gt;C++ / Conan&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Dart / pub&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Clojure / Leiningen&lt;/span&gt;
+&lt;span class="eco-tag"&gt;Swift PM&lt;/span&gt;
+&lt;/div&gt;
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 2: Verify build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+</code></pre></div>
+<p>Expected: <code>INFO - Documentation built in X.X seconds</code></p>
+<ul>
+<li>[ ] <strong>Step 3: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/index.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add homepage with hero, product cards, and ecosystem strip"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-3-getting-started-docsgetting-startedmd">Task 3: Getting Started (<code>docs/getting-started.md</code>)<a class="headerlink" href="#task-3-getting-started-docsgetting-startedmd" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/getting-started.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/getting-started.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># Getting Started</span>
+
+Not sure which integration to use? Pick based on your setup.
+
+---
+
+<span class="gu">## I use an AI coding assistant</span>
+
+<span class="gs">**Claude Code, Cursor, GitHub Copilot, Windsurf, Cline, Aider, Continue.dev, Gemini CLI, or Codex CLI?**</span>
+
+→ Use <span class="gs">**[AI Skills](skills/index.md)**</span>.
+
+The skill is a set of instructions that teaches your coding assistant to invoke
+the Meterian CLI automatically. Once installed, it runs when you open a manifest
+file and surfaces vulnerabilities inline, without leaving your editor.
+
+<span class="gs">**Prerequisite:**</span> Node.js 18+ must be available in your terminal (the skill invokes
+<span class="sb">`npx @meterian/cli`</span> under the hood).
+
+[<span class="nt">Install AI Skills :octicons-arrow-right-24:</span>](<span class="na">skills/installation/index.md</span>){ .md-button .md-button--primary }
+
+---
+
+<span class="gu">## I use an MCP-compatible client</span>
+
+<span class="gs">**Claude Desktop, Gemini CLI, Codex CLI, or any other MCP client?**</span>
+
+→ Use the <span class="gs">**[MCP Server](mcp/index.md)**</span>.
+
+The standalone <span class="sb">`@meterian/mcp`</span> package registers a Model Context Protocol server
+with your AI client. Once registered, your AI can query live vulnerability data
+for any library without you having to run any CLI commands yourself.
+
+[<span class="nt">Install MCP Server :octicons-arrow-right-24:</span>](<span class="na">mcp/installation.md</span>){ .md-button .md-button--primary }
+
+---
+
+<span class="gu">## I want direct command-line auditing</span>
+
+<span class="gs">**No AI tooling — just a fast CLI audit from the terminal?**</span>
+
+→ Use the <span class="gs">**[CLI](cli/index.md)**</span>.
+
+<span class="sb">`npx @meterian/cli check`</span> reads a JSON list of dependencies from stdin and returns
+a vulnerability report. No account, no global install, no configuration.
+
+[<span class="nt">CLI documentation :octicons-arrow-right-24:</span>](<span class="na">cli/index.md</span>){ .md-button .md-button--primary }
+
+---
+
+<span class="gu">## Can I use more than one?</span>
+
+Yes. A common setup is to use AI Skills for day-to-day development and the CLI
+in CI pipelines. The MCP Server adds live lookups on top of either.
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 2: Verify build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+</code></pre></div>
+<p>Expected: no errors.</p>
+<ul>
+<li>[ ] <strong>Step 3: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/getting-started.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add Getting Started routing page"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-4-cli-section-3-pages">Task 4: CLI section (3 pages)<a class="headerlink" href="#task-4-cli-section-3-pages" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/cli/index.md</code>
+- Create: <code>docs/cli/commands.md</code>
+- Create: <code>docs/cli/languages.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/cli/index.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># CLI — Overview</span>
+
+The Meterian CLI (<span class="sb">`@meterian/cli`</span>) is a command-line tool for auditing
+open-source dependencies against the Meterian vulnerability database.
+
+<span class="gu">## Key features</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Zero-install**</span> — run via <span class="sb">`npx @meterian/cli`</span> without any global setup
+<span class="k">-</span><span class="w"> </span><span class="gs">**No account required**</span> — works out of the box
+<span class="k">-</span><span class="w"> </span><span class="gs">**Batch auditing**</span> — check all your dependencies in one call via <span class="sb">`check`</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**Individual lookups**</span> — query a single package with <span class="sb">`advisories get`</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**Safe upgrade paths**</span> — find the least-disruptive fix with <span class="sb">`nextsafe`</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**12+ ecosystems**</span> — Node.js, Python, Java, Rust, Go, and more
+
+<span class="gu">## Installation</span>
+
+=== "Zero-install (recommended)"
+
+<span class="sb">    ```bash</span>
+<span class="w">    </span>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>&lt;command&gt;
+<span class="sb">    ```</span>
+
+    No setup required. npx fetches the latest version on first use and caches it.
+
+=== "Global install"
+
+<span class="sb">    ```bash</span>
+<span class="w">    </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@meterian/cli
+<span class="sb">    ```</span>
+
+    After global install, use <span class="sb">`meterian &lt;command&gt;`</span> instead of <span class="sb">`npx @meterian/cli &lt;command&gt;`</span>.
+
+<span class="gu">## Quick example</span>
+
+```bash
+echo '[{"language":"nodejs","name":"lodash","version":"4.17.15"}]' \
+  | npx <span class="ni">@meterian/cli</span> check
+</code></pre></div>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../cli/commands/">Commands reference</a></li>
+<li><a href="../../../cli/languages/">Supported languages</a>
+<div class="highlight"><pre><span></span><code>- [ ] **Step 2: Create `docs/cli/commands.md`**
+
+````markdown
+# CLI — Commands
+
+## check
+
+Batch-audit a list of dependencies for known vulnerabilities.
+
+**Input:** JSON array of `{"language", "name", "version"}` objects, read from stdin.
+
+```bash
+echo '[
+  {"language":"nodejs","name":"lodash","version":"4.17.15"},
+  {"language":"python","name":"requests","version":"2.25.0"}
+]' | npx @meterian/cli check
+</code></pre></div></li>
+</ul>
+<p><strong>Output:</strong> JSON object with:</p>
+<ul>
+<li><code>vulnerable</code> — array of packages with known issues (empty if clean)</li>
+<li><code>summary</code> — totals: <code>total</code>, <code>vulnerable</code>, <code>clean</code></li>
+</ul>
+<p>Each entry in <code>vulnerable</code> includes <code>safeVersions</code> ordered <code>[latestPatch, latestMinor, latestMajor]</code> (nulls excluded).</p>
+<p><strong>Example output (vulnerable):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"vulnerable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodejs"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.15"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"advisories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CVE-2021-23337"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HIGH"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command injection via template"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"safeVersions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"4.17.21"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"vulnerable"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"clean"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="advisories-get">advisories get<a class="headerlink" href="#advisories-get" title="Permanent link">&para;</a></h2>
+<p>Look up all known security advisories for a specific package version.</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>advisories<span class="w"> </span>get<span class="w"> </span>&lt;language&gt;<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;version&gt;
+</code></pre></div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>advisories<span class="w"> </span>get<span class="w"> </span>nodejs<span class="w"> </span>lodash<span class="w"> </span><span class="m">4</span>.17.15
+</code></pre></div>
+<p><strong>Output:</strong> JSON object with an <code>advisories</code> array. Each advisory includes id,
+severity, title, description, and affected version range.</p>
+<hr />
+<h2 id="nextsafe">nextsafe<a class="headerlink" href="#nextsafe" title="Permanent link">&para;</a></h2>
+<p>Find the safest upgrade path for a vulnerable package.</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>nextsafe<span class="w"> </span>&lt;language&gt;<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;version&gt;
+</code></pre></div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@meterian/cli<span class="w"> </span>nextsafe<span class="w"> </span>nodejs<span class="w"> </span>lodash<span class="w"> </span><span class="m">4</span>.17.15
+</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"safe_versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"latestPatch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.21"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"latestMinor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"latestMajor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>latestPatch</code></td>
+<td>Earliest safe version at same <code>major.minor</code></td>
+</tr>
+<tr>
+<td><code>latestMinor</code></td>
+<td>Earliest safe version at same <code>major</code></td>
+</tr>
+<tr>
+<td><code>latestMajor</code></td>
+<td>Latest safe version overall</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>null</code> value means no safe version exists at that semver level.</p>
+<hr />
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KIWI_BASE_URL</code></td>
+<td><code>https://kiwi.meterian.io</code></td>
+<td>Override the advisory database endpoint</td>
+</tr>
+<tr>
+<td><div class="highlight"><pre><span></span><code>- [ ] **Step 3: Create `docs/cli/languages.md`**
+
+```markdown
+# CLI — Supported Languages
+
+All three Meterian products use the same language identifiers. Use the primary
+value in the `language` field; aliases are also accepted.
+
+| Ecosystem | Primary value | Accepted aliases |
+|-----------|--------------|-----------------|
+| Node.js / npm | `nodejs` | `javascript`, `npm` |
+| Python | `python` | `pypi`, `pip` |
+| Java (Maven) | `java` | `maven` |
+| Java (Gradle) | `java` | `gradle` |
+| PHP | `php` | `packagist`, `composer` |
+| Ruby | `ruby` | `gem`, `bundler` |
+| .NET | `dotnet` | `nuget`, `csharp` |
+| Go | `golang` | `go` |
+| Rust | `rust` | `cargo` |
+| C / C++ | `cpp` | `conan` |
+| Dart / Flutter | `dart` | `flutter`, `pub` |
+| Clojure | `clojure` | `leiningen`, `clojars` |
+| Swift | `swift` | `spm` |
+
+## Manifest file mapping
+
+| Manifest file | Language value |
+|--------------|----------------|
+| `package.json`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` | `nodejs` |
+| `requirements.txt`, `Pipfile`, `pyproject.toml`, `poetry.lock`, `uv.lock` | `python` |
+| `pom.xml` | `java` |
+| `build.gradle`, `build.gradle.kts` | `java` |
+| `Cargo.toml`, `Cargo.lock` | `rust` |
+| `composer.json`, `composer.lock` | `php` |
+| `Gemfile`, `Gemfile.lock` | `ruby` |
+| `go.mod`, `go.sum` | `golang` |
+| `*.csproj` | `dotnet` |
+| `conanfile.txt`, `conanfile.py` | `cpp` |
+| `pubspec.yaml`, `pubspec.lock` | `dart` |
+| `project.clj`, `deps.edn` | `clojure` |
+| `Package.swift`, `Package.resolved` | `swift` |
+```
+
+- [ ] **Step 4: Verify build**
+
+```bash
+mkdocs build 2&gt;&amp;1 | tail -5
+```
+
+Expected: no errors.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add docs/cli/
+git commit -m "feat(docs): add CLI section — overview, commands, languages"
+```
+
+---
+
+## Task 5: AI Skills overview + skill pages (3 pages)
+
+**Files:**
+- Create: `docs/skills/index.md`
+- Create: `docs/skills/security-audit.md`
+- Create: `docs/skills/reachability-analysis.md`
+
+- [ ] **Step 1: Create `docs/skills/index.md`**
+
+```markdown
+# AI Skills — Overview
+
+Meterian AI Skills are instruction files that teach your AI coding assistant to
+invoke the Meterian CLI directly — no extra tooling, no browser extension, no
+account required.
+
+## How they work
+
+When you install a Meterian skill, your AI assistant gains two new capabilities:
+
+1. **Automatic scanning** — the skill triggers when you open or modify a manifest
+   file (`package.json`, `pom.xml`, `Cargo.toml`, etc.) and runs a full dependency
+   audit in the background.
+
+2. **On-demand queries** — you can ask your assistant questions like
+   "Is lodash 4.17.15 safe?" or "Fix all my vulnerable dependencies."
+
+Under the hood, the skill instructs the assistant to run `npx @meterian/cli`
+commands and format the results as a readable report.
+
+## Available skills
+
+| Skill | Trigger |
+|-------|---------|
+| [Security Audit](security-audit.md) | Opens/modifies any manifest file, or ask "audit my dependencies" |
+| [Reachability Analysis](reachability-analysis.md) | After a security audit finds vulnerabilities |
+
+## Supported AI tools
+
+| Tool | Install method |
+|------|---------------|
+| [Claude Code](installation/claude-code.md) | Plugin marketplace |
+| [Cursor](installation/cursor.md) | Plugin manager |
+| [GitHub Copilot](installation/copilot.md) | Copy instructions file |
+| [Windsurf](installation/windsurf.md) | Copy rules directory |
+| [Cline](installation/cline.md) | Copy `.clinerules` |
+| [Aider](installation/aider.md) | Copy config file |
+| [Continue.dev](installation/continue.md) | Copy rules directory |
+| [Gemini CLI](installation/gemini.md) | Copy extension files |
+| [Codex CLI](installation/codex.md) | Copy `AGENTS.md` |
+
+## Prerequisite
+
+Node.js 18 or later must be available in the terminal where your AI tool runs.
+The skills invoke `npx @meterian/cli` — Node.js is required; the CLI itself is
+fetched automatically and needs no separate installation.
+```
+
+- [ ] **Step 2: Create `docs/skills/security-audit.md`**
+
+````markdown
+# Security Audit
+
+The `meterian:security-audit` skill audits your project's open-source dependencies
+for known vulnerabilities and offers to fix them.
+
+## What it does
+
+### Mode A — Full project audit
+
+When you ask "audit my dependencies", "scan this project", or simply open a
+manifest file, the skill:
+
+1. Finds all manifest files in the workspace
+2. Reads each file and resolves exact installed versions (using lock files where
+   available)
+3. Sends all dependencies to the Meterian CLI in one batch call
+4. Presents results as a table with severity, CVE ID, and safe versions
+
+```
+## Meterian Security Audit Report
+
+| Package | Version | Severity | ID             | Safe Versions |
+|---------|---------|----------|----------------|---------------|
+| lodash  | 4.17.15 | HIGH     | CVE-2021-23337 | 4.17.21       |
+
+Summary: 1 vulnerability found across 42 packages (41 clean).
+```
+
+If no vulnerabilities are found: `✅ No vulnerabilities detected across N packages.`
+
+### Mode B — Ad-hoc query
+
+Ask "Is express 4.17.1 safe?" or "What CVEs affect log4j 2.14.1?" — the skill
+looks up that specific package and reports inline.
+
+### Mode C — Remediation
+
+After an audit, the skill offers to fix vulnerable packages:
+
+- **Patch-level upgrades** are applied automatically
+- **Minor or major upgrades** are shown first and require your confirmation
+
+After applying fixes, the skill re-runs the audit to confirm all packages are clean.
+
+## Auto-trigger manifest files
+
+The skill activates automatically when you open or modify any of these files:
+
+`package.json` · `package-lock.json` · `yarn.lock` · `pnpm-lock.yaml` ·
+`requirements.txt` · `Pipfile` · `pyproject.toml` · `poetry.lock` · `uv.lock` ·
+`pom.xml` · `build.gradle` · `build.gradle.kts` · `Cargo.toml` · `Cargo.lock` ·
+`composer.json` · `composer.lock` · `Gemfile` · `Gemfile.lock` ·
+`go.mod` · `go.sum` · `*.csproj` · `conanfile.txt` · `conanfile.py` ·
+`pubspec.yaml` · `pubspec.lock` · `project.clj` · `deps.edn` ·
+`Package.swift` · `Package.resolved`
+
+## Relationship to Reachability Analysis
+
+After finding vulnerabilities, the skill offers to run a
+[Reachability Analysis](reachability-analysis.md) to determine which of them are
+actually exploitable in your codebase.
+</code></pre></div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[ ] <strong>Step 3: Create <code>docs/skills/reachability-analysis.md</code></strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="gh"># Reachability Analysis</span>
+
+The <span class="sb">`meterian:reachability-analysis`</span> skill determines whether vulnerable
+dependencies found by a security audit are actually reachable and exploitable
+in your application source code.
+
+!!! info
+    This skill runs after a Security Audit that has found vulnerabilities. If no
+    vulnerabilities were found, reachability analysis is not needed.
+
+<span class="gu">## Why reachability matters</span>
+
+A dependency can be vulnerable without your application being exploitable.
+The vulnerable code path might be:
+
+<span class="k">-</span><span class="w"> </span>Present in the package but never imported by your code
+<span class="k">-</span><span class="w"> </span>Imported but never called in practice
+<span class="k">-</span><span class="w"> </span>Callable only under specific configurations that don't apply to your deployment
+
+Reachability Analysis classifies each finding so you can prioritise what to fix first.
+
+<span class="gu">## Workflow</span>
+
+The skill follows a 6-step process:
+
+<span class="gs">**Step 1 — Enrich**</span> each vulnerable package using <span class="sb">`npx @meterian/cli advisories get`</span>
+to identify the specific vulnerable function, symbol, or behaviour.
+
+<span class="gs">**Step 2 — Identify entry points**</span> in your application: HTTP routes, API controllers,
+CLI commands, serverless handlers, background jobs, queue consumers, etc.
+
+<span class="gs">**Step 3 — Search for usage**</span> of each vulnerable package — imports, <span class="sb">`require()`</span> calls,
+dependency injection bindings, framework auto-loading, and dynamic imports.
+
+<span class="gs">**Step 4 — Trace call paths**</span> from entry points to the vulnerable behaviour,
+considering attacker-controlled input and exploit preconditions.
+
+<span class="gs">**Step 5 — Classify**</span> each finding using exactly one classification (see below).
+
+<span class="gs">**Step 6 — Assign priority**</span> based on classification and impact.
+
+<span class="gu">## Classifications</span>
+
+| Classification | Meaning |
+|----------------|---------|
+| <span class="gs">**Reachable**</span> | Clear call path from entry point to vulnerable behaviour; attacker-controlled input can reach it |
+| <span class="gs">**Conditionally reachable**</span> | Path exists but depends on configuration, feature flags, authentication, roles, or deployment conditions |
+| <span class="gs">**Loaded but not called**</span> | Package is imported or initialised, but vulnerable behaviour is never invoked |
+| <span class="gs">**Present but not reachable**</span> | Package is in the dependency tree but not loaded by your code |
+| <span class="gs">**Unknown**</span> | Insufficient information — source code incomplete, advisory detail missing, or runtime behaviour unclear |
+
+<span class="gu">## Priority levels</span>
+
+| Priority | Condition |
+|----------|-----------|
+| <span class="gs">**Critical**</span> | Reachable, remotely triggerable, high impact |
+| <span class="gs">**High**</span> | Reachable with realistic preconditions |
+| <span class="gs">**Medium**</span> | Conditionally reachable |
+| <span class="gs">**Low**</span> | Present but not reachable, with strong evidence |
+| <span class="gs">**Investigate**</span> | Unknown or low confidence |
+
+<span class="gu">## Output</span>
+
+The skill produces a finding report for each vulnerability, followed by a summary table:
+</code></pre></div>
+| Package | Version | CVE            | Classification            | Priority | Recommended Upgrade |
+|---------|---------|----------------|---------------------------|----------|---------------------|
+| lodash  | 4.17.15 | CVE-2021-23337 | Reachable                 | Critical | 4.17.21             |
+| axios   | 0.21.0  | CVE-2021-10190 | Loaded but not called     | Low      | 1.6.0               |
+| moment  | 2.18.0  | CVE-2022-24785 | Present but not reachable | Low      | 2.29.4              |
+<div class="highlight"><pre><span></span><code>For reachable or conditionally reachable findings, the skill offers to run
+remediation via the Security Audit skill (Mode C).
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 4: Verify build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+</code></pre></div>
+<p>Expected: no errors.</p>
+<ul>
+<li>[ ] <strong>Step 5: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/skills/index.md<span class="w"> </span>docs/skills/security-audit.md<span class="w"> </span>docs/skills/reachability-analysis.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add AI Skills overview, Security Audit, and Reachability Analysis pages"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-6-ai-skills-installation-overview-claude-code-cursor-copilot">Task 6: AI Skills installation — Overview + Claude Code + Cursor + Copilot<a class="headerlink" href="#task-6-ai-skills-installation-overview-claude-code-cursor-copilot" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/skills/installation/index.md</code>
+- Create: <code>docs/skills/installation/claude-code.md</code>
+- Create: <code>docs/skills/installation/cursor.md</code>
+- Create: <code>docs/skills/installation/copilot.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/skills/installation/index.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># AI Skills — Installation</span>
+
+Choose your AI coding assistant:
+
+| Tool | Type | Install method |
+|------|------|---------------|
+| [<span class="nt">Claude Code</span>](<span class="na">claude-code.md</span>) | CLI / IDE extension | Plugin marketplace (two commands) |
+| [<span class="nt">Cursor</span>](<span class="na">cursor.md</span>) | IDE | Plugin manager URL |
+| [<span class="nt">GitHub Copilot</span>](<span class="na">copilot.md</span>) | VS Code / JetBrains / CLI | Copy one file |
+| [<span class="nt">Windsurf</span>](<span class="na">windsurf.md</span>) | IDE | Copy rules directory |
+| [<span class="nt">Cline</span>](<span class="na">cline.md</span>) | VS Code extension | Copy <span class="sb">`.clinerules`</span> + <span class="sb">`skills/`</span> |
+| [<span class="nt">Aider</span>](<span class="na">aider.md</span>) | CLI | Copy config + <span class="sb">`skills/`</span> |
+| [<span class="nt">Continue.dev</span>](<span class="na">continue.md</span>) | VS Code / JetBrains | Copy rules directory |
+| [<span class="nt">Gemini CLI</span>](<span class="na">gemini.md</span>) | CLI | Copy two files |
+| [<span class="nt">Codex CLI</span>](<span class="na">codex.md</span>) | CLI | Copy <span class="sb">`AGENTS.md`</span> |
+
+<span class="gs">**Prerequisite for all tools:**</span> Node.js 18+ must be available in the terminal
+where your AI tool runs.
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 2: Create <code>docs/skills/installation/claude-code.md</code></strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="gh"># Install for Claude Code</span>
+
+Run these two commands in Claude Code:
+</code></pre></div>
+/plugin marketplace add MeterianHQ/ai-skills
+/plugin install meterian@meterian-ai-skills
+/reload-plugins
+<div class="highlight"><pre><span></span><code>That's it. The skills activate immediately. Open any manifest file to trigger
+the Security Audit, or type `/meterian-security-audit` to run it manually.
+
+## Verify
+
+After `/reload-plugins`, type:
+</code></pre></div>
+/skills
+<div class="highlight"><pre><span></span><code>You should see `meterian:security-audit` and `meterian:reachability-analysis` in the list.
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 3: Create <code>docs/skills/installation/cursor.md</code></strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="gh"># Install for Cursor</span>
+
+In Cursor's plugin manager, point to the repository:
+</code></pre></div>
+https://github.com/MeterianHQ/ai-skills
+<div class="highlight"><pre><span></span><code>Cursor will fetch the plugin manifest from `.cursor-plugin/plugin.json` and
+install the skills automatically.
+
+## Verify
+
+Open any `package.json`, `pom.xml`, or other manifest file. Cursor should
+invoke the `meterian:security-audit` skill and begin scanning.
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 4: Create <code>docs/skills/installation/copilot.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># Install for GitHub Copilot</span>
+
+Copy the instructions file into your project's <span class="sb">`.github/`</span> directory:
+
+```bash
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/MeterianHQ/ai-skills/main/.github/copilot-instructions.md
+</code></pre></div>
+<p>Or manually:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># from the ai-skills repo</span>
+cp<span class="w"> </span>.github/copilot-instructions.md<span class="w"> </span>your-project/.github/
+</code></pre></div>
+<p>GitHub Copilot reads <code>.github/copilot-instructions.md</code> automatically. No restart required.</p>
+<h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<p>Open a manifest file in VS Code with Copilot active, or ask Copilot:</p>
+<div class="highlight"><pre><span></span><code>Audit my dependencies for vulnerabilities.
+</code></pre></div>
+<p>Copilot should invoke the Meterian CLI and return a vulnerability report.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 5: Verify build**
+
+```bash
+mkdocs build 2&gt;&amp;1 | tail -5
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 6: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/skills/installation/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add AI Skills installation pages — overview, Claude Code, Cursor, Copilot"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-7-ai-skills-installation-windsurf-cline-aider">Task 7: AI Skills installation — Windsurf + Cline + Aider<a class="headerlink" href="#task-7-ai-skills-installation-windsurf-cline-aider" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/skills/installation/windsurf.md</code>
+- Create: <code>docs/skills/installation/cline.md</code>
+- Create: <code>docs/skills/installation/aider.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/skills/installation/windsurf.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># Install for Windsurf</span>
+
+Copy the Windsurf rules directory into your project root:
+
+```bash
+cp -r .windsurf your-project/
+</code></pre></div>
+<p>Or clone the repository and symlink:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MeterianHQ/ai-skills<span class="w"> </span>/tmp/ai-skills
+ln<span class="w"> </span>-s<span class="w"> </span>/tmp/ai-skills/.windsurf<span class="w"> </span>your-project/.windsurf
+</code></pre></div>
+<p>Windsurf picks up rules from <code>.windsurf/rules/</code> automatically on next reload.</p>
+<h2 id="verify_1">Verify<a class="headerlink" href="#verify_1" title="Permanent link">&para;</a></h2>
+<p>Open a manifest file in Windsurf. The Security Audit skill should trigger.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 2: Create `docs/skills/installation/cline.md`**
+
+```markdown
+# Install for Cline
+
+Copy both the rules file and the skills directory into your project root:
+
+```bash
+cp .clinerules your-project/
+cp -r skills your-project/
+</code></pre></div></p>
+<p>Cline reads <code>.clinerules</code> and follows <code>!include</code> directives to load skill content
+from the <code>skills/</code> directory.</p>
+<h2 id="verify_2">Verify<a class="headerlink" href="#verify_2" title="Permanent link">&para;</a></h2>
+<p>Open a manifest file in VS Code with Cline active. The Security Audit skill
+should trigger automatically.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 3: Create `docs/skills/installation/aider.md`**
+
+```markdown
+# Install for Aider
+
+Copy the config file and skills directory into your project root:
+
+```bash
+cp .aider.conf.yml your-project/
+cp -r skills your-project/
+</code></pre></div></p>
+<p>Aider reads the <code>read:</code> entries in <code>.aider.conf.yml</code> on startup and loads the
+skill content automatically.</p>
+<h2 id="verify_3">Verify<a class="headerlink" href="#verify_3" title="Permanent link">&para;</a></h2>
+<p>Start Aider from your project directory and ask:</p>
+<div class="highlight"><pre><span></span><code>Audit my dependencies for vulnerabilities.
+</code></pre></div>
+<p>Aider should invoke the Meterian CLI and return a report.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 4: Verify build**
+
+```bash
+mkdocs build 2&gt;&amp;1 | tail -5
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 5: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/skills/installation/windsurf.md<span class="w"> </span>docs/skills/installation/cline.md<span class="w"> </span>docs/skills/installation/aider.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add AI Skills install pages — Windsurf, Cline, Aider"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-8-ai-skills-installation-continuedev-gemini-cli-codex-cli">Task 8: AI Skills installation — Continue.dev + Gemini CLI + Codex CLI<a class="headerlink" href="#task-8-ai-skills-installation-continuedev-gemini-cli-codex-cli" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/skills/installation/continue.md</code>
+- Create: <code>docs/skills/installation/gemini.md</code>
+- Create: <code>docs/skills/installation/codex.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/skills/installation/continue.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># Install for Continue.dev</span>
+
+Copy the rules directory into your project root:
+
+```bash
+cp -r .continue your-project/
+</code></pre></div>
+<p>Continue reads rule files from <code>.continue/rules/</code> and applies them based on the
+<code>globs</code> and <code>alwaysApply</code> frontmatter settings in each file.</p>
+<h2 id="verify_4">Verify<a class="headerlink" href="#verify_4" title="Permanent link">&para;</a></h2>
+<p>Open a manifest file in VS Code or JetBrains with Continue active. The Security
+Audit skill should trigger automatically.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 2: Create `docs/skills/installation/gemini.md`**
+
+```markdown
+# Install for Gemini CLI
+
+Copy the two Gemini skill delivery files into your project root:
+
+```bash
+cp gemini-extension.json GEMINI.md your-project/
+</code></pre></div></p>
+<p><code>GEMINI.md</code> uses <code>@</code>-include directives to load the skill content into Gemini
+CLI's context automatically on startup. It is not project documentation — do not
+edit it.</p>
+<h2 id="verify_5">Verify<a class="headerlink" href="#verify_5" title="Permanent link">&para;</a></h2>
+<p>Start Gemini CLI from your project directory and ask:</p>
+<p><div class="highlight"><pre><span></span><code>Audit my dependencies for vulnerabilities.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>- [ ] **Step 3: Create `docs/skills/installation/codex.md`**
+
+```markdown
+# Install for Codex CLI
+
+Copy `AGENTS.md` to your project root:
+
+```bash
+cp AGENTS.md your-project/
+</code></pre></div></p>
+<p>Like <code>GEMINI.md</code>, this is a skill delivery file — it uses <code>@</code>-include directives
+to load the skill content into Codex CLI's context. It is not project documentation.</p>
+<h2 id="verify_6">Verify<a class="headerlink" href="#verify_6" title="Permanent link">&para;</a></h2>
+<p>Start Codex CLI from your project directory and ask:</p>
+<p><div class="highlight"><pre><span></span><code>Audit my dependencies for vulnerabilities.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>- [ ] **Step 4: Verify full build with strict mode**
+
+```bash
+mkdocs build --strict 2&gt;&amp;1 | tail -10
+</code></pre></div></p>
+<p>Expected: <code>INFO - Documentation built in X.X seconds</code> — no warnings or errors now that all nav pages exist.</p>
+<ul>
+<li>[ ] <strong>Step 5: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/skills/installation/continue.md<span class="w"> </span>docs/skills/installation/gemini.md<span class="w"> </span>docs/skills/installation/codex.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add AI Skills install pages — Continue.dev, Gemini CLI, Codex CLI"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-9-mcp-server-overview-tools-reference">Task 9: MCP Server — Overview + Tools Reference<a class="headerlink" href="#task-9-mcp-server-overview-tools-reference" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/mcp/index.md</code>
+- Create: <code>docs/mcp/tools.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/mcp/index.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># MCP Server — Overview</span>
+
+The Meterian MCP Server (<span class="sb">`@meterian/mcp`</span>) is a standalone
+[<span class="nt">Model Context Protocol</span>](<span class="na">https://modelcontextprotocol.io/</span>) server that exposes
+real-time vulnerability data to any MCP-compatible AI client.
+
+<span class="gu">## Why use the MCP Server?</span>
+
+AI assistants are pre-trained on a fixed dataset that becomes stale over time.
+New vulnerabilities are discovered daily, and the model has no awareness of issues
+found after its training cutoff. The Meterian MCP Server solves this by giving
+your AI client a live connection to the Meterian advisory database.
+
+Once registered, your AI can answer questions like:
+
+<span class="k">-</span><span class="w"> </span><span class="ge">*"Is any of my project's dependencies currently vulnerable?"*</span>
+<span class="k">-</span><span class="w"> </span><span class="ge">*"What is the safest version I can upgrade axios to?"*</span>
+<span class="k">-</span><span class="w"> </span><span class="ge">*"List all critical vulnerabilities in this workspace."*</span>
+
+<span class="gu">## How it works</span>
+
+The server communicates via stdin/stdout using the JSON-RPC 2.0 protocol
+(MCP spec version 2024-11-05). It exposes two tools:
+
+| Tool | Purpose |
+|------|---------|
+| [<span class="sb">`advisories_get`</span>](tools.md#advisories_get) | Return all known advisories for a specific library version |
+| [<span class="sb">`advisories_getnextsafe`</span>](tools.md#advisories_getnextsafe) | Return safe upgrade versions for a vulnerable library |
+
+<span class="gu">## Relationship to the CLI</span>
+
+The MCP Server queries the same Meterian Kiwi database as the CLI. The difference
+is delivery: the CLI is invoked directly from a shell; the MCP Server exposes the
+same data as a protocol endpoint that any MCP client can call without shell access.
+
+<span class="gu">## Free tier</span>
+
+The MCP Server operates in Free mode by default, with access to the full
+vulnerability database. Premium mode delivers expanded advisory details — contact
+[<span class="nt">support@meterian.io</span>](<span class="na">mailto:support@meterian.io</span>) for details.
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 2: Create <code>docs/mcp/tools.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># MCP Server — Tools Reference</span>
+
+The Meterian MCP Server exposes two tools.
+
+---
+
+<span class="gu">## advisories_get</span>
+
+Returns all known security advisories and license issues for a specific library version.
+
+<span class="gs">**Parameters:**</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <span class="sb">`language`</span> | string | yes | Package manager (see [<span class="nt">Supported Languages</span>](<span class="na">../cli/languages.md</span>)) |
+| <span class="sb">`name`</span> | string | yes | Package name as published |
+| <span class="sb">`version`</span> | string | yes | Library version to check |
+
+<span class="gs">**Example call:**</span>
+
+<span class="sb">```json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"advisories_get"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodejs"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.15"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gs">**Response:**</span> JSON object with an <span class="sb">`advisories`</span> array. Each entry contains the
+advisory ID, severity, title, description, and affected version range.
+
+---
+
+<span class="gu">## advisories_getnextsafe</span>
+
+Returns the recommended safe upgrade versions for a vulnerable library.
+
+<span class="gs">**Parameters:**</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <span class="sb">`language`</span> | string | yes | Package manager (see [<span class="nt">Supported Languages</span>](<span class="na">../cli/languages.md</span>)) |
+| <span class="sb">`name`</span> | string | yes | Package name as published |
+| <span class="sb">`version`</span> | string | yes | Current (vulnerable) version |
+
+<span class="gs">**Example call:**</span>
+
+<span class="sb">```json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"advisories_getnextsafe"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodejs"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.15"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gs">**Response:**</span>
+
+<span class="sb">```json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"safe_versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"latestPatch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.21"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"latestMinor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"latestMajor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="sb">```</span>
+
+| Field | Meaning |
+|-------|---------|
+| <span class="sb">`latestPatch`</span> | Earliest safe version at the same <span class="sb">`major.minor`</span> — least disruptive fix |
+| <span class="sb">`latestMinor`</span> | Earliest safe version at the same <span class="sb">`major`</span> |
+| <span class="sb">`latestMajor`</span> | Latest safe version overall — most up-to-date fix |
+
+A <span class="sb">`null`</span> value means no safe version exists at that semver level (e.g. the
+vulnerability affects all versions of that major line).
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 3: Verify build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 4: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/mcp/index.md<span class="w"> </span>docs/mcp/tools.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add MCP Server overview and tools reference"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-10-mcp-server-installation-supported-clients-prompts">Task 10: MCP Server — Installation + Supported Clients + Prompts<a class="headerlink" href="#task-10-mcp-server-installation-supported-clients-prompts" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/mcp/installation.md</code>
+- Create: <code>docs/mcp/clients.md</code>
+- Create: <code>docs/mcp/prompts.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/mcp/installation.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># MCP Server — Installation</span>
+
+The standalone <span class="sb">`@meterian/mcp`</span> package installs and auto-registers the MCP
+server with whichever supported AI CLI tools it finds on your machine.
+
+<span class="gu">## Quick install</span>
+
+```bash
+npm install -g <span class="ni">@meterian/mcp</span>
+</code></pre></div>
+<p>After installation, run the registration script:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@meterian/mcp<span class="w"> </span>install
+</code></pre></div>
+<p>The installer detects Claude Code, Gemini CLI, and Codex CLI on your machine
+and registers the server with each one automatically.</p>
+<h2 id="manual-registration">Manual registration<a class="headerlink" href="#manual-registration" title="Permanent link">&para;</a></h2>
+<p>If auto-registration does not work for your client, register manually:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Claude Code</label><label for="__tabbed_1_2">Gemini CLI</label><label for="__tabbed_1_3">Codex CLI</label><label for="__tabbed_1_4">mcp-cli</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>claude<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>meterian-mcp<span class="w"> </span>-s<span class="w"> </span>user<span class="w"> </span>--<span class="w"> </span>node<span class="w"> </span><span class="k">$(</span>npm<span class="w"> </span>root<span class="w"> </span>-g<span class="k">)</span>/@meterian/mcp/dist/index.js
+</code></pre></div>
+<p>If Claude Code does not reconnect automatically, open <code>/mcp</code> and select <strong>Reconnect</strong>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>gemini<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>meterian-mcp<span class="w"> </span>node<span class="w"> </span><span class="k">$(</span>npm<span class="w"> </span>root<span class="w"> </span>-g<span class="k">)</span>/@meterian/mcp/dist/index.js<span class="w"> </span>--scope<span class="w"> </span>user
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>codex<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>meterian-mcp<span class="w"> </span>--<span class="w"> </span>node<span class="w"> </span><span class="k">$(</span>npm<span class="w"> </span>root<span class="w"> </span>-g<span class="k">)</span>/@meterian/mcp/dist/index.js
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Add to <code>~/.config/mcp/mcp_servers.json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"meterian-mcp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;path-to-global-node-modules&gt;/@meterian/mcp/dist/index.js"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="vs-code-users">VS Code users<a class="headerlink" href="#vs-code-users" title="Permanent link">&para;</a></h2>
+<p>If you use the <a href="https://marketplace.visualstudio.com/items?itemName=Meterian.meterian-security">Meterian Security VS Code extension</a>,
+the MCP Server is bundled and registers automatically with VS Code Copilot,
+Cursor, and Windsurf when the extension activates. The standalone package is
+only needed for AI CLI tools or clients outside VS Code.</p>
+<h2 id="verify_7">Verify<a class="headerlink" href="#verify_7" title="Permanent link">&para;</a></h2>
+<p>Ask your AI client:</p>
+<div class="highlight"><pre><span></span><code>Are any of my project's dependencies currently vulnerable?
+</code></pre></div>
+<p>If the MCP Server is registered correctly, the client calls <code>advisories_get</code>
+or initiates a full audit.
+<div class="highlight"><pre><span></span><code>- [ ] **Step 2: Create `docs/mcp/clients.md`**
+
+```markdown
+# MCP Server — Supported Clients
+
+| Client | Registration | Notes |
+|--------|-------------|-------|
+| Claude Code | Auto via installer, or manual `claude mcp add` | May need Reconnect on first use |
+| Gemini CLI | Auto via installer, or manual `gemini mcp add` | |
+| Codex CLI | Auto via installer, or manual `codex mcp add` | |
+| VS Code Copilot | Automatic via VS Code extension | No standalone package needed |
+| Cursor | Automatic via VS Code extension | No standalone package needed |
+| Windsurf | Automatic via VS Code extension | No standalone package needed |
+| mcp-cli | Manual config in `~/.config/mcp/mcp_servers.json` | |
+
+Any other MCP-compatible client that supports stdio transport (JSON-RPC 2.0 /
+MCP spec 2024-11-05) can be registered manually by pointing to the
+`@meterian/mcp` entry point.
+
+## VS Code extension vs standalone package
+
+| | VS Code extension | Standalone `@meterian/mcp` |
+|---|---|---|
+| VS Code Copilot | ✅ Auto-registered | ✗ |
+| Cursor | ✅ Auto-registered | ✗ |
+| Windsurf | ✅ Auto-registered | ✗ |
+| Claude Code | Via VS Code command | ✅ Auto via installer |
+| Gemini CLI | Via VS Code command | ✅ Auto via installer |
+| Codex CLI | Via VS Code command | ✅ Auto via installer |
+| GitHub Copilot Cloud agents | ✗ | ✅ Required |
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 3: Create <code>docs/mcp/prompts.md</code></strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="gh"># MCP Server — Prompts &amp; Examples</span>
+
+Example prompts to use with any MCP-compatible AI client once the Meterian
+MCP Server is registered.
+
+<span class="gu">## Check for vulnerabilities</span>
+</code></pre></div>
+Are any of my project's dependencies currently vulnerable?
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+Scan all manifest files in this workspace for known security vulnerabilities.
+<div class="highlight"><pre><span></span><code>## Get a safe upgrade version
+</code></pre></div>
+What is the safest version I can upgrade axios to?
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+What's the next safe patch version for log4j 2.14.1?
+<div class="highlight"><pre><span></span><code>## Triage by severity
+</code></pre></div>
+List all critical and high severity vulnerabilities in this project.
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+Which of my dependencies have a CVSS score above 7?
+<div class="highlight"><pre><span></span><code>## Targeted lookups
+</code></pre></div>
+Is express@4.17.1 affected by any known vulnerabilities?
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+What CVEs affect org.springframework:spring-web at version 5.3.18?
+<div class="highlight"><pre><span></span><code>## Automated remediation
+
+**Patch-level fixes only:**
+</code></pre></div>
+Using the Meterian MCP server, check all dependencies in this project for known
+vulnerabilities. For each vulnerable dependency, get the next safe version and
+apply a fix — but only if the safe version is a patch-level upgrade (same major
+and minor version). Update the manifest files accordingly.
+<div class="highlight"><pre><span></span><code>**Full remediation with approval:**
+</code></pre></div>
+Audit all dependencies using the Meterian MCP server. Apply patch-level fixes
+automatically. For minor and major version upgrades, show me the changes and ask
+for confirmation before applying.
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 4: Verify strict build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span>--strict<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+</code></pre></div>
+<p>Expected: clean build, no warnings.</p>
+<ul>
+<li>[ ] <strong>Step 5: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/mcp/installation.md<span class="w"> </span>docs/mcp/clients.md<span class="w"> </span>docs/mcp/prompts.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add MCP Server installation, clients, and prompts pages"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-11-faq">Task 11: FAQ<a class="headerlink" href="#task-11-faq" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- Create: <code>docs/faq.md</code></p>
+<ul>
+<li>[ ] <strong>Step 1: Create <code>docs/faq.md</code></strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gh"># FAQ</span>
+
+<span class="gu">## Do I need a Meterian account?</span>
+
+No. All three products — CLI, AI Skills, and MCP Server — work without an account
+in Free mode, with full access to the vulnerability database.
+
+<span class="gu">## Is this free?</span>
+
+Yes. The CLI, AI Skills, and MCP Server are free and open source (MIT licence).
+A Premium mode is available for organisations that need expanded advisory details
+or SLA support — contact [<span class="nt">support@meterian.io</span>](<span class="na">mailto:support@meterian.io</span>).
+
+<span class="gu">## What data is sent to Meterian?</span>
+
+The CLI and MCP Server send package names and versions to the Meterian Kiwi
+advisory database to look up vulnerability information. No source code, no
+file contents, and no personal data are transmitted.
+
+<span class="gu">## Which Node.js version is required?</span>
+
+Node.js 18 or later. This applies to both the CLI (<span class="sb">`npx @meterian/cli`</span>) and the
+MCP Server (<span class="sb">`@meterian/mcp`</span>).
+
+<span class="gu">## Can I use AI Skills and the MCP Server together?</span>
+
+Yes. They serve different purposes. AI Skills teach your assistant to run full
+project audits via the CLI (reading manifest files, batch-checking all
+dependencies). The MCP Server gives your assistant a live lookup tool for
+individual packages. Many users run both.
+
+<span class="gu">## The skill triggered but didn't find my manifest file</span>
+
+Make sure Node.js 18+ is available in the terminal where your AI tool runs.
+Run <span class="sb">`node --version`</span> to check. If <span class="sb">`npx`</span> is not found, install Node.js from
+[<span class="nt">nodejs.org</span>](<span class="na">https://nodejs.org</span>).
+
+<span class="gu">## How do I report a bug or request a feature?</span>
+
+Open an issue on [<span class="nt">GitHub</span>](<span class="na">https://github.com/MeterianHQ/ai-skills/issues</span>).
+For security disclosures, email [<span class="nt">security@meterian.io</span>](<span class="na">mailto:security@meterian.io</span>)
+rather than opening a public issue.
+</code></pre></div>
+<ul>
+<li>[ ] <strong>Step 2: Final strict build</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span>--strict<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<p>Expected: <code>INFO - Documentation built in X.X seconds</code> with no warnings or errors.</p>
+<ul>
+<li>[ ] <strong>Step 3: Commit</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>docs/faq.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(docs): add FAQ page"</span>
+</code></pre></div>
+<hr />
+<h2 id="task-12-enable-github-pages-and-deploy">Task 12: Enable GitHub Pages and deploy<a class="headerlink" href="#task-12-enable-github-pages-and-deploy" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- No new files — deployment only.</p>
+<ul>
+<li>[ ] <strong>Step 1: Enable GitHub Pages in the repository settings</strong></li>
+</ul>
+<p>Go to <code>https://github.com/MeterianHQ/ai-skills/settings/pages</code> and set:</p>
+<ul>
+<li><strong>Source:</strong> Deploy from a branch</li>
+<li><strong>Branch:</strong> <code>gh-pages</code> / <code>/ (root)</code></li>
+</ul>
+<p>Save. GitHub will show the Pages URL: <code>https://meterianhq.github.io/ai-skills/</code></p>
+<ul>
+<li>[ ] <strong>Step 2: Deploy manually via mkdocs</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
+</code></pre></div>
+<p>Expected output ends with:
+<div class="highlight"><pre><span></span><code>INFO - Your documentation should shortly be available at:
+       https://meterianhq.github.io/ai-skills/
+</code></pre></div></p>
+<ul>
+<li>[ ] <strong>Step 3: Verify the site is live</strong></li>
+</ul>
+<p>Open <code>https://meterianhq.github.io/ai-skills/</code> in a browser. Confirm:</p>
+<ul>
+<li>Homepage loads with hero section and three product cards</li>
+<li>Navigation tabs show: Home · Getting Started · CLI · AI Skills · MCP Server · FAQ</li>
+<li>Dark mode toggle works</li>
+<li>Search works (try "lodash")</li>
+<li>
+<p>All three product card links navigate correctly</p>
+</li>
+<li>
+<p>[ ] <strong>Step 4: Push all commits to trigger GitHub Actions on future pushes</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<p>Verify the Actions workflow runs at <code>https://github.com/MeterianHQ/ai-skills/actions</code>
+and the <code>docs.yml</code> job completes successfully.</p>
+<ul>
+<li>[ ] <strong>Step 5: Final commit (update README with site link)</strong></li>
+</ul>
+<p>Edit <code>README.md</code> — add the docs URL near the top:</p>
+<div class="highlight"><pre><span></span><code><span class="gs">**Documentation:**</span> https://meterianhq.github.io/ai-skills/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: add GitHub Pages site link to README"</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<hr />
+<h2 id="self-review">Self-review<a class="headerlink" href="#self-review" title="Permanent link">&para;</a></h2>
+<p><strong>Spec coverage check:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Spec requirement</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MkDocs + Material, indigo palette, Roboto fonts</td>
+<td>Task 1</td>
+</tr>
+<tr>
+<td>GitHub Pages via <code>docs/</code> on <code>main</code></td>
+<td>Task 1, 12</td>
+</tr>
+<tr>
+<td>GitHub Actions build + deploy</td>
+<td>Task 1</td>
+</tr>
+<tr>
+<td>Homepage: hero (light tint, "Free · No account required"), 3 product cards, architecture, ecosystem strip</td>
+<td>Task 2</td>
+</tr>
+<tr>
+<td>Getting Started routing page</td>
+<td>Task 3</td>
+</tr>
+<tr>
+<td>CLI: Overview, Commands, Supported Languages</td>
+<td>Task 4</td>
+</tr>
+<tr>
+<td>AI Skills: Overview, Security Audit, Reachability Analysis</td>
+<td>Task 5</td>
+</tr>
+<tr>
+<td>AI Skills: 9 per-tool installation pages</td>
+<td>Tasks 6–8</td>
+</tr>
+<tr>
+<td>MCP: Overview, Tools Reference, Installation, Supported Clients, Prompts</td>
+<td>Tasks 9–10</td>
+</tr>
+<tr>
+<td>FAQ</td>
+<td>Task 11</td>
+</tr>
+<tr>
+<td>Sidebar: plain text labels, no emoji</td>
+<td>mkdocs.yml nav in Task 1</td>
+</tr>
+<tr>
+<td>Product icons (⚡🧠🔌) only in homepage cards</td>
+<td>Task 2</td>
+</tr>
+<tr>
+<td>Content for MCP section adapted from VS Code extension site</td>
+<td>Tasks 9–10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No placeholders:</strong> All pages contain complete content. ✓</p>
+<p><strong>Type consistency:</strong> No cross-task references to undefined functions or types (this is a docs-only project). ✓</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
