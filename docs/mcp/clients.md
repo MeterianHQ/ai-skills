@@ -9,10 +9,12 @@
 | Cursor | Automatic via VS Code extension | No standalone package needed |
 | Windsurf | Automatic via VS Code extension | No standalone package needed |
 | mcp-cli | Manual config in `~/.config/mcp/mcp_servers.json` | |
+| Roo Code | Manual config in `mcp_settings.json` or `.roo/mcp.json` | See [Config-File Clients](config-file-clients.md) |
 
 Any other MCP-compatible client that supports stdio transport (JSON-RPC 2.0 /
 MCP spec 2024-11-05) can be registered manually by pointing to the
-`@meterian/mcp` entry point.
+`@meterian/mcp` entry point — see [Config-File Clients](config-file-clients.md)
+for a worked example.
 
 ## VS Code extension vs standalone package
 

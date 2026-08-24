@@ -55,6 +55,12 @@ If auto-registration does not work for your client, register manually:
     }
     ```
 
+    Run `npm root -g` to resolve `<path-to-global-node-modules>` — JSON configs
+    do not expand shell substitutions or `~`.
+
+For clients with no `mcp add` command that are configured purely through a JSON
+file (for example Roo Code), see [Config-File Clients](config-file-clients.md).
+
 ## VS Code users
 
 If you use the [Meterian Security VS Code extension](https://marketplace.visualstudio.com/items?itemName=Meterian.meterian-security),
@@ -72,3 +78,36 @@ Are any of my project's dependencies currently vulnerable?
 
 If the MCP Server is registered correctly, the client calls `advisories_get`
 or initiates a full audit.
+
+## Uninstall
+
+Deregister the server from each client you registered it with:
+
+=== "Claude Code"
+
+    ```bash
+    claude mcp remove meterian-mcp -s user
+    ```
+
+=== "Gemini CLI"
+
+    ```bash
+    gemini mcp remove meterian-mcp --scope user
+    ```
+
+=== "Codex CLI"
+
+    ```bash
+    codex mcp remove meterian-mcp
+    ```
+
+=== "Config-file clients"
+
+    Delete the `meterian-mcp` entry from the client's MCP config file
+    (for example `~/.config/mcp/mcp_servers.json` for mcp-cli).
+
+Then remove the package:
+
+```bash
+npm uninstall -g @meterian/mcp
+```

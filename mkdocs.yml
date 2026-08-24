@@ -87,6 +87,7 @@ nav:
     - Tools Reference: mcp/tools.md
     - Installation: mcp/installation.md
     - Supported Clients: mcp/clients.md
+    - Config-File Clients: mcp/config-file-clients.md
     - Prompts & Examples: mcp/prompts.md
   - CLI:
     - Overview: cli/index.md
